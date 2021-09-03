@@ -8,8 +8,11 @@ var zoom_speed = 0.09
 var max_zoom=3.0
 var min_zoom=0.5
 var zoom=1.5
+#跟踪对象
+var target
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	target=find_parent("あやめ").get_node("Skeleton")
 	pass
 func _input(event):
 	#缩小
@@ -34,4 +37,7 @@ func _input(event):
 			$v.rotate_object_local(Vector3.RIGHT, dir*y_rotation * mouse_sense)
 func _process(delta):
 	scale=lerp(scale, Vector3.ONE * zoom, zoom_speed)
+	#跟随对象
+	if target:
+		global_transform.origin=target.global_transform.origin
 	pass

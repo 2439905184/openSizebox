@@ -19,10 +19,11 @@ var drop_speed=8
 #onready var third=$thrid
 var foot
 onready var anim=$anim
-var rotate_speed=0.09
+var rotate_speed=0.2
+
 func _ready():
-	foot=$foot
-	print_debug(foot)
+	if self.name=="あやめ":
+		foot=$foot
 	pass
 func _process(delta):
 	if self.name=="あやめ":
@@ -36,21 +37,13 @@ func _process(delta):
 			self.translation.y-=drop_speed*delta
 			print_debug("下落")
 		if Input.is_action_pressed("walk"):
-			var rot=lerp(self.rotation_degrees.y,$Skeleton/h.rotation_degrees.y,rotate_speed)
-			self.rotation_degrees.y=rot
+			$Skeleton.rotation.y=$h.rotation.y
 			$Skeleton.translate_object_local(Vector3(0,0,-speed*delta))
-			#.rotated(Vector3.UP,$h.rotation.y))
 			if !anim.is_playing():
 				anim.play("walk")
 			if foot!=null:
 				if !foot.is_playing():
 					foot.play()
-			#.rotated(Vector3(0,1,0),deg2rad(third.rotation_degrees.y)))
-			#self.rotation_degrees.y=third.rotation_degrees.y
-			
-#		else:
-#			self.translate(Vector3(0,0,-speed*delta))
-			#self.translate(Vector3(0,0,-speed*delta).rotated(Vector3(0,1,0),deg2rad($thrid.rotation_degrees.y)))
 func _input(event):
 	if self.name=="あやめ":
 		if event is InputEventMouseButton:

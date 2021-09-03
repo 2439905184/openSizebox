@@ -141,4 +141,31 @@ position = Vector2( 881.497, 492.173 )
 position = Vector2( 949.302, 496.411 )
 
 [node name="AliciaSolid_vrm-051" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13776, 0, 6.67965 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )
+
+[node name="Path" type="Path" parent="."]
+
+[node name="PathFollow" type="PathFollow" parent="Path"]
+transform = Transform( -0.863212, 0.341136, -0.372143, 0.401986, 0.910399, -0.0978907, 0.305404, -0.234097, -0.922999, 12.5925, 0, -1.49862 )
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="1" type="Position3D" parent="Spatial" groups=[
+"move_pos",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.14777 )
+
+[node name="2" type="Position3D" parent="Spatial" groups=[
+"move_pos",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8208, 0, -5.14777 )
+
+[node name="3" type="Position3D" parent="Spatial" groups=[
+"move_pos",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8208, 0, 7.80043 )
+
+[node name="4" type="Position3D" parent="Spatial" groups=[
+"move_pos",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0224476, 0, 7.80043 )
