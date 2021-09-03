@@ -14,18 +14,28 @@ export var gizmo_spring_bone: bool = false
 export var gizmo_spring_bone_color: Color = Color.yellow
 var del=0.05
 var speed=2
-onready var third=$thrid
+#掉落速度
+var drop_speed=8
+#onready var third=$thrid
+onready var foot=$foot
 func _process(delta):
 	if Input.is_action_pressed("grow"):
 		self.scale+=Vector3(del,del,del)
 	if Input.is_action_pressed("small"):
 		self.scale-=Vector3(del,del,del)
+	if Input.is_action_just_pressed("jump"):
+		self.translation.y+=10
+	if self.translation.y>0:
+		self.translation.y-=drop_speed*delta
+		print_debug("下落")
 	if Input.is_action_pressed("walk"):
-		
+		self.translate(Vector3(0,0,-speed*delta))
+		if !foot.is_playing():
+			foot.play()
+			#.rotated(Vector3(0,1,0),deg2rad(third.rotation_degrees.y)))
 		pass
 			#self.rotation_degrees.y=third.rotation_degrees.y
-			#self.translate(Vector3(0,0,-speed*delta).rotated(Vector3(0,1,0),deg2rad(third.rotation_degrees.y)))
-
+			
 #		else:
 #			self.translate(Vector3(0,0,-speed*delta))
 			#self.translate(Vector3(0,0,-speed*delta).rotated(Vector3(0,1,0),deg2rad($thrid.rotation_degrees.y)))
@@ -35,6 +45,8 @@ func _input(event):
 			$face.make_current()
 		if event.button_index==BUTTON_RIGHT:
 			$h/v/Camera.make_current()
+	if event.is_action_pressed("r"):
+		get_tree().reload_current_scene()
 	pass
 class VRMUtil:
 	static func from_to_rotation(from: Vector3, to: Vector3):
