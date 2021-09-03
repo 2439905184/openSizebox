@@ -24,10 +24,18 @@ var action
 var grow_speed=0.25
 #var selected=false
 var select_obj
+enum player_actions{fly,idle,walk}
+var player_action
 signal selected
+var anim_tree
+var anim_playback
 func _ready():
 	if self.name=="anata":
 		foot=$foot
+		anim_tree=$AnimationTree
+		anim_playback=anim_tree["parameters/playback"]#.get("parameters/playback")
+		print_debug(anim_tree)
+		print_debug(anim_playback)
 	pass
 func show_size():
 	if not $Label.visible:
@@ -40,7 +48,6 @@ func _process(delta):
 		if action=="shrunk_other":
 			self.scale-=Vector3(1,1,1)*grow_speed*delta
 		if action=="stop_other":
-			
 			pass
 	if self.name=="anata":
 		if Input.is_action_pressed("grow"):
@@ -54,16 +61,22 @@ func _process(delta):
 		if self.translation.y>0:
 			self.translation.y-=drop_speed*delta
 			print_debug("下落")
-		if Input.is_action_pressed("walk"):
+		if Input.is_action_just_released("walk"):
+			anim_playback.travel("idle")
+		if Input.is_action_just_pressed("walk"):
 			$Skeleton.rotation.y=$h.rotation.y
 			$Skeleton.translate_object_local(Vector3(0,0,-speed*delta))
-			if !anim.is_playing():
-				anim.play("walk")
+			#if !anim.is_playing():
+			anim_playback.start("walk")
+			print_debug("走路状态")
+				#anim.play("walk")
 			if foot!=null:
 				if !foot.is_playing():
 					foot.play()
 func _input(event):
 	if self.name=="anata":
+		if event.is_action_pressed("fly"):
+			player_action=player_actions.fly
 		if event is InputEventMouseButton:
 			if event.button_index==BUTTON_MIDDLE:
 				$face.make_current()
