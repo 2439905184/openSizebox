@@ -20,17 +20,32 @@ var drop_speed=8
 var foot
 onready var anim=$anim
 var rotate_speed=0.2
-
+var action
+var grow_speed=0.25
 func _ready():
-	if self.name=="あやめ":
+	if self.name=="anata":
 		foot=$foot
 	pass
+func show_size():
+	if not $Label.visible:
+		$Label.show()
+	$Label.text="Size:"+str(self.scale.x)
 func _process(delta):
-	if self.name=="あやめ":
+	if self.name=="alice":
+		if action=="grow_other":
+			self.scale+=Vector3(1,1,1)*grow_speed*delta
+		if action=="shrunk_other":
+			self.scale-=Vector3(1,1,1)*grow_speed*delta
+		if action=="stop_other":
+			
+			pass
+	if self.name=="anata":
 		if Input.is_action_pressed("grow"):
 			self.scale+=Vector3(del,del,del)
+			show_size()
 		if Input.is_action_pressed("small"):
 			self.scale-=Vector3(del,del,del)
+			show_size()
 		if Input.is_action_just_pressed("jump"):
 			self.translation.y+=10
 		if self.translation.y>0:
@@ -45,7 +60,7 @@ func _process(delta):
 				if !foot.is_playing():
 					foot.play()
 func _input(event):
-	if self.name=="あやめ":
+	if self.name=="anata":
 		if event is InputEventMouseButton:
 			if event.button_index==BUTTON_MIDDLE:
 				$face.make_current()
@@ -77,3 +92,24 @@ class VRMUtil:
 	# https://github.com/vrm-c/vrm-specification/issues/205
 	static func coordinate_u2g(vec: Vector3) -> Vector3:
 		return Vector3(vec.x, vec.y, -vec.z)
+func _on_Tab_track_enable():
+	if self.name=="anata":
+		$h.track_mouse=true
+		print_debug($h.track_mouse)
+func _on_StaticBody_input_event(camera, event, click_position, click_normal, shape_idx):
+	if self.name=="alice":
+		if event is InputEventMouseButton:
+			if event.button_index==BUTTON_RIGHT:
+				$vbox.show()
+func _on_grow_pressed():
+	if self.name=="alice":
+		action="grow_other"
+func _on_shrunk_pressed():
+	if self.name=="alice":
+		action="shrunk_other"
+func _on_stop_pressed():
+	if self.name=="alice":
+		action="stop_other"
+func _on_close_pressed():
+	$vbox.hide()
+	pass # Replace with function body.

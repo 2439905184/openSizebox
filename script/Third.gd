@@ -10,9 +10,10 @@ var min_zoom=0.5
 var zoom=1.5
 #跟踪对象
 var target
+var track_mouse=true
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	target=find_parent("あやめ").get_node("Skeleton")
+	target=find_parent("anata").get_node("Skeleton")
 	pass
 func _input(event):
 	#缩小
@@ -22,9 +23,10 @@ func _input(event):
 		zoom += zoom_speed
 	zoom = clamp(zoom,min_zoom,max_zoom)
 	if event.is_action_pressed("esc"):
+		track_mouse=false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	#相机旋转代码
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and track_mouse:
 		if event.relative.x != 0:
 			var dir = 1 if invert_x else -1
 			#-1.4限制向前旋转 -0.01限制向后旋转 rotation是弧度
