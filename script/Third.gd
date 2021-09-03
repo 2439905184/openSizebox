@@ -30,7 +30,7 @@ func _input(event):
 		if event.relative.x != 0:
 			var dir = 1 if invert_x else -1
 			#-1.4限制向前旋转 -0.01限制向后旋转 rotation是弧度
-			$v.rotation.x= clamp($v.rotation.x,-1.4,0.5)
+			$v.rotation.x= clamp($v.rotation.x,-1.4,1.7)
 			rotate_object_local(Vector3.UP, dir * event.relative.x * mouse_sense)
 			#print_debug($v.rotation.x)
 		if event.relative.y!=0:

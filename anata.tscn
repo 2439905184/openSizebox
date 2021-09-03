@@ -540,7 +540,7 @@ script = ExtResource( 3 )
 
 [node name="v" type="Spatial" parent="h" index="0"]
 
-[node name="Camera" type="ClippedCamera" parent="h/v" index="0"]
+[node name="Camera" type="Camera" parent="h/v" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.996309, 1.49985 )
 current = true
 

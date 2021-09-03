@@ -7,8 +7,8 @@ var action="前"
 var sel_obj
 #是否放下物体
 var placed=false
+var sel_anim
 func _ready():
-	#alice=$"AliciaSolid_vrm-051"
 	move_pos=get_tree().get_nodes_in_group("move_pos")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _input(event):
@@ -32,8 +32,38 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 		if event is InputEventMouseButton and placed==false:
 			placed=true
 			sel_obj.translation=click_position
-		print_debug(placed)
+		#print_debug(placed)
 func _on_GridContainer_select(select_obj):
 	sel_obj=select_obj
 	add_child(sel_obj)
+	sel_obj.connect("selected",self,"select",[])
+	sel_anim=sel_obj.get_node("anim")
+	$tip.text="选中的对象:"+str(sel_obj)
+func select(obj):
+	sel_obj=obj
+	$tip.text="选中的对象:"+str(sel_obj)
+	pass
+func _on_Animation_toggled(button_pressed):
+	$AnimationPanel.visible=button_pressed
 	pass # Replace with function body.
+func _on_walk_pressed():
+	sel_anim.play("walk")
+	pass
+func _on_angry_pressed():
+	sel_anim.play("ANGRY")
+	pass # Replace with function body.
+func _on_Transform_toggled(button_pressed):
+	$TransfromPanel.visible=button_pressed
+	pass # Replace with function body.
+func _on_slider_scale_value_changed(value):
+	if sel_obj!=null:
+		sel_obj.scale=Vector3(value,value,value)
+func _on_slider_rot_x_value_changed(value):
+	if sel_obj!=null:
+		sel_obj.rotation_degrees.x=value
+func _on_slider_rot_y_value_changed(value):
+	if sel_obj!=null:
+		sel_obj.rotation_degrees.y=value
+func _on_slider_rot_z_value_changed(value):
+	if sel_obj!=null:
+		sel_obj.rotation_degrees.z=value

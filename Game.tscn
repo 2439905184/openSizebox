@@ -1,12 +1,15 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://anata.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/library/library.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://script/Game.gd" type="Script" id=3]
 [ext_resource path="res://script/Tab.gd" type="Script" id=4]
 [ext_resource path="res://font/Alibaba-PuHuiTi-Regular.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://font/20.tres" type="DynamicFont" id=6]
 [ext_resource path="res://font/40.tres" type="DynamicFont" id=7]
 [ext_resource path="res://script/GridContainer.gd" type="Script" id=8]
+[ext_resource path="res://styles/Panel.tres" type="StyleBox" id=9]
+[ext_resource path="res://script/transVbox.gd" type="Script" id=10]
 
 [sub_resource type="QuadMesh" id=1]
 size = Vector2( 2000, 2000 )
@@ -14,7 +17,7 @@ size = Vector2( 2000, 2000 )
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.541176, 0.741176, 0.45098, 1 )
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape" id=3]
 extents = Vector3( 421.638, 1, 432.372 )
 
 [sub_resource type="Curve3D" id=4]
@@ -137,7 +140,7 @@ material/0 = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="floor/StaticBody"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.73181e-08, -0.853738 )
-shape = SubResource( 6 )
+shape = SubResource( 3 )
 
 [node name="anata" parent="." instance=ExtResource( 1 )]
 
@@ -206,7 +209,6 @@ margin_right = 64.0
 margin_bottom = 18.0
 
 [node name="Tab" type="Control" parent="."]
-visible = false
 margin_left = 10.0
 margin_top = 523.0
 margin_right = 1022.0
@@ -237,27 +239,248 @@ __meta__ = {
 
 [node name="Objects" type="Button" parent="Tab/HBoxContainer"]
 margin_left = 98.0
-margin_right = 182.0
+margin_right = 150.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 5 )
-text = "Objects"
+text = "物体"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Transform" type="Button" parent="Tab/HBoxContainer"]
+margin_left = 154.0
+margin_right = 206.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 5 )
+text = "变换"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Animation" type="Button" parent="Tab/HBoxContainer"]
+margin_left = 210.0
+margin_right = 262.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 5 )
+toggle_mode = true
+text = "动画"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pose" type="Button" parent="Tab/HBoxContainer"]
+margin_left = 266.0
+margin_right = 318.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 5 )
+text = "姿态"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move" type="Button" parent="Tab/HBoxContainer"]
+margin_left = 322.0
+margin_right = 374.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 5 )
+text = "移动"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="Button" parent="Tab/HBoxContainer"]
+margin_left = 378.0
+margin_right = 430.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 5 )
+text = "菜单"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Close" type="Button" parent="Tab/HBoxContainer"]
-margin_left = 186.0
-margin_right = 250.0
+margin_left = 434.0
+margin_right = 486.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 5 )
-text = "Close"
+text = "关闭"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 870.0
+margin_top = 276.0
+margin_right = 910.0
+margin_bottom = 304.0
+custom_fonts/font = ExtResource( 6 )
+text = "变换"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TransfromPanel" type="Panel" parent="."]
+margin_left = 796.0
+margin_top = 257.0
+margin_right = 1025.0
+margin_bottom = 596.0
+custom_styles/panel = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="transVbox" type="VBoxContainer" parent="TransfromPanel"]
+margin_left = 14.0
+margin_top = 62.0
+margin_right = 224.0
+margin_bottom = 286.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="TransfromPanel/transVbox"]
+margin_right = 210.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 6 )
+text = "旋转:x"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slider_rot_x" type="HSlider" parent="TransfromPanel/transVbox"]
+margin_top = 32.0
+margin_right = 210.0
+margin_bottom = 48.0
+max_value = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="TransfromPanel/transVbox"]
+margin_top = 52.0
+margin_right = 210.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 6 )
+text = "旋转:y"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slider_rot_y" type="HSlider" parent="TransfromPanel/transVbox"]
+margin_top = 84.0
+margin_right = 210.0
+margin_bottom = 100.0
+max_value = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="TransfromPanel/transVbox"]
+margin_top = 104.0
+margin_right = 210.0
+margin_bottom = 132.0
+custom_fonts/font = ExtResource( 6 )
+text = "旋转:z"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slider_rot_z" type="HSlider" parent="TransfromPanel/transVbox"]
+margin_top = 136.0
+margin_right = 210.0
+margin_bottom = 152.0
+max_value = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TransfromPanel/transVbox"]
+margin_top = 156.0
+margin_right = 210.0
+margin_bottom = 184.0
+custom_fonts/font = ExtResource( 6 )
+text = "大小"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slider_scale" type="HSlider" parent="TransfromPanel/transVbox"]
+margin_top = 188.0
+margin_right = 210.0
+margin_bottom = 204.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="size_info" type="Label" parent="TransfromPanel/transVbox"]
+margin_top = 208.0
+margin_right = 210.0
+margin_bottom = 236.0
+custom_fonts/font = ExtResource( 6 )
+text = "size:1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tip" type="Label" parent="."]
+margin_left = 719.0
+margin_top = 9.0
+margin_right = 819.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 6 )
+text = "选中的对象:null"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPanel" type="Panel" parent="."]
+visible = false
+margin_right = 199.0
+margin_bottom = 516.0
+custom_styles/panel = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "这里应该自动生成"
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AnimationPanel"]
+margin_right = 188.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="walk" type="Button" parent="AnimationPanel/VBoxContainer"]
+margin_right = 188.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 6 )
+text = "walk"
+
+[node name="angry" type="Button" parent="AnimationPanel/VBoxContainer"]
+margin_top = 38.0
+margin_right = 188.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 6 )
+text = "angry"
 
 [connection signal="input_event" from="floor/StaticBody" to="." method="_on_StaticBody_input_event"]
 [connection signal="select" from="GridContainer" to="." method="_on_GridContainer_select"]
 [connection signal="pressed" from="GridContainer/Alice" to="GridContainer" method="_on_Alice_pressed"]
 [connection signal="track_enable" from="Tab" to="anata" method="_on_Tab_track_enable"]
 [connection signal="toggled" from="Tab/HBoxContainer/Giantess" to="GridContainer" method="_on_Giantess_toggled"]
+[connection signal="toggled" from="Tab/HBoxContainer/Transform" to="." method="_on_Transform_toggled"]
+[connection signal="toggled" from="Tab/HBoxContainer/Animation" to="." method="_on_Animation_toggled"]
 [connection signal="pressed" from="Tab/HBoxContainer/Close" to="Tab" method="_on_Close_pressed"]
+[connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_x" to="." method="_on_slider_rot_x_value_changed"]
+[connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_y" to="." method="_on_slider_rot_y_value_changed"]
+[connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_z" to="." method="_on_slider_rot_z_value_changed"]
+[connection signal="value_changed" from="TransfromPanel/transVbox/slider_scale" to="TransfromPanel/transVbox" method="_on_slider_scale_value_changed"]
+[connection signal="value_changed" from="TransfromPanel/transVbox/slider_scale" to="." method="_on_slider_scale_value_changed"]
+[connection signal="pressed" from="AnimationPanel/VBoxContainer/walk" to="." method="_on_walk_pressed"]
+[connection signal="pressed" from="AnimationPanel/VBoxContainer/angry" to="." method="_on_angry_pressed"]
