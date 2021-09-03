@@ -1,0 +1,52 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/path = NodePath("BoneEditor/Root/J_Bip_C_Hips/J_Bip_L_UpperLeg:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 24.313, 0, 0 ), Vector3( -24.313, 0, 0 ), Vector3( 24.313, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BoneEditor/Root/J_Bip_C_Hips/J_Bip_R_UpperLeg:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -22.728, 0, 0 ), Vector3( 22.728, 0, 0 ), Vector3( -22.728, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BoneEditor/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 35.1366, 11.9104, -69.8728 ), Vector3( -33.7435, -11.2972, -70.2196 ), Vector3( 35.1366, 11.9104, -69.8728 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BoneEditor/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -38.6382, 16.1548, 65.1125 ), Vector3( 28.3516, -10.8253, 68.067 ), Vector3( -38.6382, 16.1548, 65.1125 ) ]
+}

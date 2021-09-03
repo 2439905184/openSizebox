@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://anata.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/library/library.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://script/Game.gd" type="Script" id=3]
+[ext_resource path="res://AliciaSolid_vrm051.tscn" type="PackedScene" id=4]
 
 [sub_resource type="QuadMesh" id=1]
 size = Vector2( 2000, 2000 )
@@ -17,7 +18,7 @@ data = PoolVector3Array( -1000, -1000, 0, -1000, 1000, 0, 1000, 1000, 0, -1000, 
 script = ExtResource( 3 )
 
 [node name="library" type="MeshInstance" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24049, 1.08365, -3.33088 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24049, 1.08365, 3.31599 )
 mesh = ExtResource( 2 )
 material/0 = null
 material/1 = null
@@ -126,9 +127,6 @@ shape = SubResource( 3 )
 
 [node name="あやめ" parent="." instance=ExtResource( 1 )]
 
-[node name="Position3D" type="Position3D" parent="あやめ"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21925, 1.08534 )
-
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -141,3 +139,6 @@ position = Vector2( 881.497, 492.173 )
 
 [node name="stomp" type="TouchScreenButton" parent="Control"]
 position = Vector2( 949.302, 496.411 )
+
+[node name="AliciaSolid_vrm-051" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13776, 0, 6.67965 )
