@@ -16,7 +16,7 @@ func _input(event):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event.is_action_pressed("editMode"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		$anata/h.track_mouse=false
+		$player/anata/h.track_mouse=false
 		$Tab.show()
 # warning-ignore:unused_argument
 func _process(delta):

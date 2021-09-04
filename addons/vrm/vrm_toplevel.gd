@@ -75,6 +75,7 @@ func _process(delta):
 					foot.play()
 func _input(event):
 	if self.name=="anata":
+		#F
 		if event.is_action_pressed("fly"):
 			player_action=player_actions.fly
 		if event is InputEventMouseButton:
