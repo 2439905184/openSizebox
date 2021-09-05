@@ -1,13 +1,9 @@
 extends Spatial
 onready var playback=$AnimationTree.get("parameters/playback")
 func _ready():
-	pass
+	print_debug(playback)
 func _input(event):
 	if event.is_action_pressed("fly"):
-		playback.travel("test")
-		#set("parameters/a/blend_position",1)
-		#playback.travel("rotate")
+		playback.travel("r")
 	if event.is_action_pressed("esc"):
-		playback.travel("idle")
-		#set("parameters/a/blend_position",0)
-		pass
+		playback.travel("l")
