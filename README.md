@@ -1,105 +1,20 @@
-- [日本語](README.ja.md)
-
-# VRM addon for Godot Engine
-
-This Godot addon fully implements an importer for models with the [VRM specification, version 0.0](https://github.com/vrm-c/vrm-specification/tree/master/specification/0.0).
-Compatible with Godot Engine 3.2.2 stable or newer.
-
-Proudly brought to you by the [V-Sekai team](https://v-sekai.org/about).
-
-This package also includes a standalone full implementation of the MToon Shader for Godot Engine.
-
-![Example of VRM Addon used to import two example characters](vrm_samples/screenshot/vrm_sample_screenshot.png)
-
-IMPORT support for VRM 0.0 is fully supported. Retargeting for animation currently requires an external script.
-
-## What is VRM?
-
-See [https://vrm.dev/en/](https://vrm.dev/en/) (English) or [https://vrm.dev/](https://vrm.dev/) (日本語)
-
-"VRM" is a file format for handling 3D humanoid avatar (3D model) data for VR applications.
-It is based on [glTF 2.0](https://www.khronos.org/gltf/). Anyone is free to use it.
-
-## What VRM Specification features are currently supported in Godot Engine?
-
-* vrm.blendshape
-  * binds / blend shapes: implemented (Animation tracks)
-  * material binds: implemented (Animation tracks)
-* vrm.firstperson
-  * firstPersonBone: implemented (Metadata)
-  * meshAnnotations / head shrinking: implemented (Animation method track `TODO_scale_bone`)
-  * lookAt: implemented (Animation tracks)
-* vrm.humanoid
-  * humanBones: implemented (Metadata dictionary)
-  * Unity HumanDescription values: **unsupported**
-  * Automatic mesh retargeting: **planned**
-  * humanBones renamer: **planned**
-* vrm.material
-  * shader
-    * `VRM/MToon`: fully implemented
-    * `VRM/UnlitTransparentZWrite`: fully implemented
-    * `VRM_USE_GLTFSHADER` with PBR: fully implemented
-    * `VRM_USE_GLTFSHADER` with `KHR_materials_unlit`: fully implemented
-    * legacy UniVRM shaders (`VRM/Unlit*`): supported
-    * legacy UniGLTF shaders (`UniGLTF/UniUnlit`, `Standard`): uses GLTF material
-  * renderQueue: implemented (maps to render_priority; not consistent between models)
-  * floatProperties, vectorProperties, textureProperties: implemented
-* vrm.meta (Metadata, including License information and screenshot): implemented
-* vrm.secondaryanimation (Springbone)
-  * boneGroups: fully implemented (engine optimization patch is recommended)
-  * colliderGroups: implemented (engine optimization patch is recommended)
-
-EXPORT is completely unsupported. Support will be added using the Godot 4.x GLTF Export feature in the future
-
-## Godot 3.x
-
-For VRM, use this **godot3** branch.
-
-Runtime VRM usage (springbones, metadata) works out-of-the-box with any official Godot engine 3.2.2 or above.
-
-To import VRM files and use the Editor Plugin, this addon includes a GDNative port of the upcoming
-extensible Godot 4.x GLTF module. This modules supports Windows, macos, and Linux (tested on CentOS 8).
-This GDNative addon is not necessary in release builds.
-
-Furthermore, it can be compiled into the engine as a module if necessary.
-
-GDNative source code for the godot_gltf addon, as well as a module version, are available here:
-
-* gltf module: https://github.com/V-Sekai/godot-gltf-module (`gdnative` branch)
-
-Optional engine patch to improve springbone performance:
-
-* https://github.com/V-Sekai/godot branch `improve_skeleton_for_vrm_3.2`
-
-## Godot 4.x
-
-Please use the **master** branch for Godot 4.x support.
-
-## How to use
-
-Install the vrm addon folder into addons/vrm. MUST NOT BE RENAMED: This path will be referenced by generated VRM meta scripts.
-
-Install Godot-MToon-Shader into addons/Godot-MToon-Shader. MUST NOT BE RENAMED: This path is referenced by generated materials.
-
-Install the godot_gltf GDNative helper into addons/godot_gltf. MUST NOT BE RENAMED: The GDNative C++ code also hardcodes this path.
-
-Enable the VRM and MToon plugins in Project Settings -> Plugins -> VRM and Godot-MToon-Shader.
-
-## Credits
-
-Thanks to the [V-Sekai team](https://v-sekai.org/about) and contributors:
-
-- https://github.com/fire
-- https://github.com/TokageItLab
-- https://github.com/lyuma
-- https://github.com/SaracenOne
-
-For their extensive help testing and contributing code to Godot-VRM.
-
-Special thanks to the authors of UniVRM, MToon and other VRM tooling
-
-- The VRM Consortium ( https://github.com/vrm-c )
-- https://github.com/Santarh
-- https://github.com/ousttrue
-- https://github.com/saturday06
-- https://github.com/FMS-Cat
+ # 关于此游戏
+ 此游戏借鉴了Sizebox沙盒游戏（巨大娘）沙盒游戏。<br>
+ 但是Sizebox的代码不是公开开源的，所以我仿照它做一个开源版本。<br>
+ 由于Sizebox是不开源的，所以我的游戏不能导入.gts文件，你可以用blender转换成gltf dae 或者vrm格式 （尽量用开源格式而不是fbx,Godot的fbx导入有问题）
+ # 游戏状态
+ ## WIP work in Progress 开发中（早期）预览版还没做好
+ 如果你对我的游戏感兴趣，欢迎fork并添加代码，（创建新的分支避免代码冲突）<br>
+ 或者尝试自己编译导出游戏<br>
+ 游戏截图：
+ <img src="截图1.png" alt="截图1"/>
+ <img src="截图2.png" alt="截图2"/>
+ # 开源许可暂时还没有选择
+禁止私自将游戏用于任何商业行为，（卖我的游戏）。
+（giantess 圈内游戏）（更加开放的沙盒游戏openSizebox!)<br/>
+## 由于我是学生，所以开发速度不一定会很快.
+# 宣传事项
+禁止使用18x内容宣传，我们需要维护好的一面，不要让别人觉得反感，对小圈子的发展不利。
+# 免责条款
+本人只负责游戏开发，本游戏衍生的一切mod和模型，都与我无关。gts只是一种幻想。如果没有人记得了，那大概也是该进入幻想乡的吧,笑:D。-小沙盒工作室。
+(zun语)
