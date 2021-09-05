@@ -16,6 +16,7 @@ radius = 0.362268
 height = 0.948141
 
 [node name="alice" instance=ExtResource( 1 )]
+script = null
 
 [node name="anim" parent="." index="3"]
 anims/walk = ExtResource( 5 )
