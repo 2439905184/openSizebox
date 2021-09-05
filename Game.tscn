@@ -6,7 +6,7 @@
 [ext_resource path="res://script/Tab.gd" type="Script" id=4]
 [ext_resource path="res://font/Alibaba-PuHuiTi-Regular.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://font/20.tres" type="DynamicFont" id=6]
-[ext_resource path="res://font/40.tres" type="DynamicFont" id=7]
+[ext_resource path="res://script/MorphPanel.gd" type="Script" id=7]
 [ext_resource path="res://script/GridContainer.gd" type="Script" id=8]
 [ext_resource path="res://styles/Panel.tres" type="StyleBox" id=9]
 [ext_resource path="res://script/transVbox.gd" type="Script" id=10]
@@ -184,7 +184,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8208, 0, 7.80043 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0224476, 0, 7.80043 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
-visible = false
 margin_left = 2.0
 margin_top = 10.0
 margin_right = 240.0
@@ -195,10 +194,17 @@ __meta__ = {
 }
 
 [node name="Alice" type="Button" parent="GridContainer"]
-margin_right = 104.0
-margin_bottom = 61.0
-custom_fonts/font = ExtResource( 7 )
+margin_right = 68.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 6 )
 text = "Alice"
+
+[node name="lilylily" type="Button" parent="GridContainer"]
+margin_top = 38.0
+margin_right = 68.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 6 )
+text = "lilylily"
 
 [node name="TextureButton" type="TextureButton" parent="GridContainer"]
 visible = false
@@ -276,9 +282,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Move" type="Button" parent="Tab/HBoxContainer"]
+[node name="morph" type="Button" parent="Tab/HBoxContainer"]
 margin_left = 322.0
 margin_right = 374.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 5 )
+toggle_mode = true
+text = "表情"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move" type="Button" parent="Tab/HBoxContainer"]
+margin_left = 378.0
+margin_right = 430.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 5 )
 text = "移动"
@@ -287,8 +304,8 @@ __meta__ = {
 }
 
 [node name="Menu" type="Button" parent="Tab/HBoxContainer"]
-margin_left = 378.0
-margin_right = 430.0
+margin_left = 434.0
+margin_right = 486.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 5 )
 text = "菜单"
@@ -297,8 +314,8 @@ __meta__ = {
 }
 
 [node name="Close" type="Button" parent="Tab/HBoxContainer"]
-margin_left = 434.0
-margin_right = 486.0
+margin_left = 490.0
+margin_right = 542.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 5 )
 text = "关闭"
@@ -318,6 +335,7 @@ __meta__ = {
 }
 
 [node name="TransfromPanel" type="Panel" parent="."]
+visible = false
 margin_left = 796.0
 margin_top = 257.0
 margin_right = 1025.0
@@ -426,6 +444,105 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="MorphPanel" type="Panel" parent="."]
+visible = false
+margin_left = -0.899323
+margin_top = 0.710739
+margin_right = 228.101
+margin_bottom = 339.711
+custom_styles/panel = ExtResource( 9 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="transVbox" type="VBoxContainer" parent="MorphPanel"]
+margin_left = 4.48636
+margin_top = 0.161255
+margin_right = 214.486
+margin_bottom = 224.161
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="smile" type="Label" parent="MorphPanel/transVbox"]
+margin_right = 210.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 6 )
+text = "smile"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slider_smile" type="HSlider" parent="MorphPanel/transVbox"]
+margin_top = 32.0
+margin_right = 210.0
+margin_bottom = 48.0
+max_value = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="eye" type="Label" parent="MorphPanel/transVbox"]
+margin_top = 52.0
+margin_right = 210.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 6 )
+text = "eye"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slider_eye" type="HSlider" parent="MorphPanel/transVbox"]
+margin_top = 84.0
+margin_right = 210.0
+margin_bottom = 100.0
+max_value = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MorphPanel"]
+margin_left = 11.8921
+margin_top = 294.923
+margin_right = 215.892
+margin_bottom = 334.923
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="next" type="Button" parent="MorphPanel/HBoxContainer"]
+margin_right = 72.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 6 )
+text = "下一页"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="up" type="Button" parent="MorphPanel/HBoxContainer"]
+margin_left = 76.0
+margin_right = 148.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 6 )
+text = "上一页"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="apply" type="Button" parent="MorphPanel/HBoxContainer"]
+margin_left = 152.0
+margin_right = 204.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 6 )
+text = "应用"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="tip" type="Label" parent="."]
 margin_left = 719.0
 margin_top = 9.0
@@ -475,6 +592,7 @@ text = "angry"
 [connection signal="toggled" from="Tab/HBoxContainer/Giantess" to="GridContainer" method="_on_Giantess_toggled"]
 [connection signal="toggled" from="Tab/HBoxContainer/Transform" to="." method="_on_Transform_toggled"]
 [connection signal="toggled" from="Tab/HBoxContainer/Animation" to="." method="_on_Animation_toggled"]
+[connection signal="toggled" from="Tab/HBoxContainer/morph" to="MorphPanel" method="_on_morph_toggled"]
 [connection signal="pressed" from="Tab/HBoxContainer/Close" to="Tab" method="_on_Close_pressed"]
 [connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_x" to="." method="_on_slider_rot_x_value_changed"]
 [connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_y" to="." method="_on_slider_rot_y_value_changed"]

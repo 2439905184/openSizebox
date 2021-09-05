@@ -35,11 +35,10 @@ func set_pose( basis:Basis, origin:Vector3 ):
 	self.transform.basis = basis
 	self.transform.origin = self.original_global_rest_origin + self.original_parent_rest.basis.xform( origin )
 	# printt( self.bone_name, basis, origin )
-
-func _process( delta:float ):
+#delta:float
+func _process(delta):
 	if self.skeleton == null or self.bone_id == -1:
 		return
-
 	if self.enabled:
 		var t:Transform = Transform( )
 		t.basis = self.transform.basis

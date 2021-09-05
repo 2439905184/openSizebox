@@ -9,7 +9,7 @@
 [ext_resource path="res://anim/walk.tres" type="Animation" id=7]
 [ext_resource path="res://script/anata.gd" type="Script" id=8]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=1]
 resource_name = "a"
 tracks/0/type = "value"
 tracks/0/path = NodePath("BoneEditor/Root:rotation_degrees")
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 108.332, 0 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=2]
 resource_name = "b"
 tracks/0/type = "value"
 tracks/0/path = NodePath("BoneEditor/Root:rotation_degrees")
@@ -39,8 +39,7 @@ tracks/0/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "idle"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("BoneEditor/Root/J_Bip_C_Hips/J_Bip_L_UpperLeg:rotation_degrees")
 tracks/0/interp = 1
@@ -66,7 +65,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "walk2"
 tracks/0/type = "value"
 tracks/0/path = NodePath("BoneEditor/Root/J_Bip_C_Hips/J_Bip_L_UpperLeg:rotation_degrees")
@@ -93,22 +92,22 @@ tracks/1/keys = {
 "values": [ Vector3( 23.21, 0, 0 ) ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=2]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "walk2"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "idle"
 
-[sub_resource type="AnimationNodeBlend2" id=11]
+[sub_resource type="AnimationNodeBlend2" id=7]
 
-[sub_resource type="AnimationNodeBlendTree" id=5]
+[sub_resource type="AnimationNodeBlendTree" id=8]
 graph_offset = Vector2( -14.565, -1.5 )
-nodes/Animation/node = SubResource( 10 )
+nodes/Animation/node = SubResource( 6 )
 nodes/Animation/position = Vector2( -20, 40 )
-"nodes/Animation 2/node" = SubResource( 2 )
+"nodes/Animation 2/node" = SubResource( 5 )
 "nodes/Animation 2/position" = Vector2( 20, 120 )
 nodes/output/position = Vector2( 500, 60 )
-nodes/walk/node = SubResource( 11 )
+nodes/walk/node = SubResource( 7 )
 nodes/walk/position = Vector2( 260, 40 )
 node_connections = [ "output", 0, "walk", "walk", 0, "Animation", "walk", 1, "Animation 2" ]
 
@@ -119,11 +118,11 @@ script = ExtResource( 8 )
 blend_shapes/morph_31 = 0.99999
 
 [node name="anim" parent="." index="2"]
-anims/a = SubResource( 8 )
-anims/b = SubResource( 9 )
-anims/idle = SubResource( 1 )
+anims/a = SubResource( 1 )
+anims/b = SubResource( 2 )
+anims/idle = SubResource( 3 )
 anims/walk = ExtResource( 7 )
-anims/walk2 = SubResource( 7 )
+anims/walk2 = SubResource( 4 )
 
 [node name="BoneEditor" type="Spatial" parent="." index="3"]
 script = ExtResource( 4 )
@@ -306,7 +305,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020421, 0.079606, 0.025035 
 script = ExtResource( 3 )
 
 [node name="J_Bip_L_UpperArm" type="Spatial" parent="BoneEditor/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder" index="0" instance=ExtResource( 2 )]
-transform = Transform( 0.246625, -0.944428, 0.217329, 0.708568, 0.328718, 0.6244, -0.661141, 5.96046e-08, 0.750261, -0.078722, -0.013564, -0.004893 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.078722, -0.013564, -0.004893 )
 script = ExtResource( 3 )
 
 [node name="J_Bip_L_LowerArm" type="Spatial" parent="BoneEditor/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm" index="0" instance=ExtResource( 2 )]
@@ -402,7 +401,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020421, 0.079607, 0.025034 )
 script = ExtResource( 3 )
 
 [node name="J_Bip_R_UpperArm" type="Spatial" parent="BoneEditor/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder" index="0" instance=ExtResource( 2 )]
-transform = Transform( 0.225173, 0.95959, 0.168775, -0.767841, 0.281403, -0.575528, -0.599764, 4.17233e-07, 0.800177, 0.078722, -0.013564, -0.004893 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.078722, -0.013564, -0.004893 )
 script = ExtResource( 3 )
 
 [node name="J_Bip_R_LowerArm" type="Spatial" parent="BoneEditor/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm" index="0" instance=ExtResource( 2 )]
@@ -660,7 +659,7 @@ __meta__ = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="6"]
-tree_root = SubResource( 5 )
+tree_root = SubResource( 8 )
 anim_player = NodePath("../anim")
 active = true
 parameters/walk/blend_amount = 0.0
