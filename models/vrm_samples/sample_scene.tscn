@@ -271,9 +271,6 @@ anims/wiggle4 = SubResource( 12 )
 [node name="AliciaSolid_vrm-052" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6, 0, 0 )
 
-[node name="Skeleton" parent="AliciaSolid_vrm-052/Root" index="0"]
-bones/1/bound_children = [ NodePath("BoneAttachment") ]
-
 [node name="BoneAttachment" type="BoneAttachment" parent="AliciaSolid_vrm-052/Root/Skeleton" index="12"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.060387, 0.885984, -0.000917 )
 visible = false
@@ -297,7 +294,5 @@ mesh = SubResource( 18 )
 material/0 = null
 
 [editable path="Godette_vrm_v4"]
-
 [editable path="AliciaSolid_vrm-051"]
-
 [editable path="AliciaSolid_vrm-052"]
