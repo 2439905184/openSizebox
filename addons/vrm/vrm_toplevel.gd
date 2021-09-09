@@ -21,7 +21,7 @@ var foot
 onready var anim=$anim
 var rotate_speed=0.2
 var action
-var grow_speed=0.25
+
 #var selected=false
 
 enum player_actions{fly,idle,walk}
@@ -43,10 +43,6 @@ func show_size():
 	$Label.text="Size:"+str(self.scale.x)
 func _process(delta):
 	if self.name=="alice":
-		if action=="grow_other":
-			self.scale+=Vector3(1,1,1)*grow_speed*delta
-		if action=="shrunk_other":
-			self.scale-=Vector3(1,1,1)*grow_speed*delta
 		if action=="stop_other":
 			pass
 	if self.name=="anata":
@@ -114,12 +110,8 @@ func _on_Tab_track_enable():
 		$h.track_mouse=true
 		print_debug($h.track_mouse)
 
-func _on_grow_pressed():
-	if self.name=="alice":
-		action="grow_other"
-func _on_shrunk_pressed():
-	if self.name=="alice":
-		action="shrunk_other"
+
+
 func _on_stop_pressed():
 	if self.name=="alice":
 		action="stop_other"

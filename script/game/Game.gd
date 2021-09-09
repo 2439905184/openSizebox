@@ -31,13 +31,14 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 			sel_obj.translation=click_position
 		if event is InputEventMouseButton and placed==false:
 			placed=true
-			sel_obj.translation=click_position
-		#print_debug(placed)
+			sel_obj.translation = click_position
+		print_debug(placed)
+#选择了gts 准备放置
 func _on_GridContainer_select(select_obj):
 	sel_obj=select_obj
 	add_child(sel_obj)
-	sel_obj.connect("selected",self,"select",[])
-	sel_anim=sel_obj.get_node("anim")
+	#sel_obj.connect("selected",self,"select",[])
+	#sel_anim=sel_obj.get_node("anim")
 	$tip.text="选中的对象:"+str(sel_obj)
 func select(obj):
 	sel_obj=obj

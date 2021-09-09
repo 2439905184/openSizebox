@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://scene/models/anata.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/library/library.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://script/game/Game.gd" type="Script" id=3]
 [ext_resource path="res://script/gui/Tab.gd" type="Script" id=4]
@@ -125,14 +124,16 @@ material/91 = null
 material/92 = null
 material/93 = null
 
-[node name="floor" type="MeshInstance" parent="."]
+[node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+
+[node name="floor" type="MeshInstance" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.98453 )
+visible = false
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
-[node name="StaticBody" type="StaticBody" parent="floor"]
-
-[node name="CollisionShape" type="CollisionShape" parent="floor/StaticBody"]
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.73181e-08, -0.853738 )
 shape = SubResource( 3 )
 
@@ -244,6 +245,7 @@ margin_left = 154.0
 margin_right = 206.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 4 )
+toggle_mode = true
 text = "变换"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -572,11 +574,10 @@ margin_bottom = 72.0
 custom_fonts/font = ExtResource( 6 )
 text = "angry"
 
-[node name="player" parent="." instance=ExtResource( 1 )]
-
-[connection signal="input_event" from="floor/StaticBody" to="." method="_on_StaticBody_input_event"]
+[connection signal="input_event" from="StaticBody" to="." method="_on_StaticBody_input_event"]
 [connection signal="select" from="GridContainer" to="." method="_on_GridContainer_select"]
 [connection signal="pressed" from="GridContainer/Alice" to="GridContainer" method="_on_Alice_pressed"]
+[connection signal="pressed" from="GridContainer/lilylily" to="GridContainer" method="_on_lilylily_pressed"]
 [connection signal="toggled" from="Tab/HBoxContainer/Giantess" to="GridContainer" method="_on_Giantess_toggled"]
 [connection signal="toggled" from="Tab/HBoxContainer/Transform" to="." method="_on_Transform_toggled"]
 [connection signal="toggled" from="Tab/HBoxContainer/Animation" to="." method="_on_Animation_toggled"]
@@ -585,7 +586,7 @@ text = "angry"
 [connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_x" to="." method="_on_slider_rot_x_value_changed"]
 [connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_y" to="." method="_on_slider_rot_y_value_changed"]
 [connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_z" to="." method="_on_slider_rot_z_value_changed"]
-[connection signal="value_changed" from="TransfromPanel/transVbox/slider_scale" to="." method="_on_slider_scale_value_changed"]
 [connection signal="value_changed" from="TransfromPanel/transVbox/slider_scale" to="TransfromPanel/transVbox" method="_on_slider_scale_value_changed"]
+[connection signal="value_changed" from="TransfromPanel/transVbox/slider_scale" to="." method="_on_slider_scale_value_changed"]
 [connection signal="pressed" from="AnimationPanel/VBoxContainer/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="AnimationPanel/VBoxContainer/angry" to="." method="_on_angry_pressed"]
