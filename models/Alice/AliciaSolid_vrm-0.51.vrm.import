@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/あやめ.vrm-e4ea42b85683780c0b308f7822f6b494.scn"
+path="res://.import/AliciaSolid_vrm-0.51.vrm-23c76b9ff616135a209d2f839e090a6e.scn"
 
 [deps]
 
-source_file="res://anata/あやめ.vrm"
-dest_files=[ "res://.import/あやめ.vrm-e4ea42b85683780c0b308f7822f6b494.scn" ]
+source_file="res://models/Alice/AliciaSolid_vrm-0.51.vrm"
+dest_files=[ "res://.import/AliciaSolid_vrm-0.51.vrm-23c76b9ff616135a209d2f839e090a6e.scn" ]
 
 [params]
 
@@ -16,10 +16,10 @@ nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
-nodes/use_legacy_names=false
+nodes/use_legacy_names=true
 materials/location=1
-materials/storage=1
-materials/keep_on_reimport=true
+materials/storage=0
+materials/keep_on_reimport=false
 meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0

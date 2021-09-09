@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/AliciaSolid_vrm-0.51.vrm-c94cd977ab16f79ea2c767e69bacf507.scn"
+path="res://.import/lilylily.vrm-0246918b522c0157181f143f6240b1e8.scn"
 
 [deps]
 
-source_file="res://vrm_samples/Alicia/AliciaSolid_vrm-0.51.vrm"
-dest_files=[ "res://.import/AliciaSolid_vrm-0.51.vrm-c94cd977ab16f79ea2c767e69bacf507.scn" ]
+source_file="res://models/lily/lilylily.vrm"
+dest_files=[ "res://.import/lilylily.vrm-0246918b522c0157181f143f6240b1e8.scn" ]
 
 [params]
 
@@ -16,10 +16,10 @@ nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
-nodes/use_legacy_names=true
+nodes/use_legacy_names=false
 materials/location=1
-materials/storage=0
-materials/keep_on_reimport=false
+materials/storage=1
+materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0

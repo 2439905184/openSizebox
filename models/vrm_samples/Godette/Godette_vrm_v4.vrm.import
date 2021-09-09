@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/Godette_vrm_v4.vrm-2d168ca1bbe4dc662b692096966ff1ff.scn"
+path="res://.import/Godette_vrm_v4.vrm-64d55840a19565fc9b53c872f09c6341.scn"
 
 [deps]
 
-source_file="res://vrm_samples/Godette/Godette_vrm_v4.vrm"
-dest_files=[ "res://.import/Godette_vrm_v4.vrm-2d168ca1bbe4dc662b692096966ff1ff.scn" ]
+source_file="res://models/vrm_samples/Godette/Godette_vrm_v4.vrm"
+dest_files=[ "res://.import/Godette_vrm_v4.vrm-64d55840a19565fc9b53c872f09c6341.scn" ]
 
 [params]
 

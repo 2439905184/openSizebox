@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/lilylily.vrm-89a5adfa9936121ad0401532ed0a6f5a.scn"
+path="res://.import/あやめ.vrm-fef05f909121d23d7c19cc4bed4f4ec4.scn"
 
 [deps]
 
-source_file="res://lily/lilylily.vrm"
-dest_files=[ "res://.import/lilylily.vrm-89a5adfa9936121ad0401532ed0a6f5a.scn" ]
+source_file="res://models/anata/あやめ.vrm"
+dest_files=[ "res://.import/あやめ.vrm-fef05f909121d23d7c19cc4bed4f4ec4.scn" ]
 
 [params]
 
