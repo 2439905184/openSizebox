@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://anata2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scene/models/anata.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/library/library.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://script/game/Game.gd" type="Script" id=3]
 [ext_resource path="res://script/gui/Tab.gd" type="Script" id=4]
@@ -585,7 +585,7 @@ text = "angry"
 [connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_x" to="." method="_on_slider_rot_x_value_changed"]
 [connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_y" to="." method="_on_slider_rot_y_value_changed"]
 [connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_z" to="." method="_on_slider_rot_z_value_changed"]
-[connection signal="value_changed" from="TransfromPanel/transVbox/slider_scale" to="TransfromPanel/transVbox" method="_on_slider_scale_value_changed"]
 [connection signal="value_changed" from="TransfromPanel/transVbox/slider_scale" to="." method="_on_slider_scale_value_changed"]
+[connection signal="value_changed" from="TransfromPanel/transVbox/slider_scale" to="TransfromPanel/transVbox" method="_on_slider_scale_value_changed"]
 [connection signal="pressed" from="AnimationPanel/VBoxContainer/walk" to="." method="_on_walk_pressed"]
 [connection signal="pressed" from="AnimationPanel/VBoxContainer/angry" to="." method="_on_angry_pressed"]
