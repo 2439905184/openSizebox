@@ -1,15 +1,15 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://anata2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/library/library.obj" type="ArrayMesh" id=2]
-[ext_resource path="res://script/Game.gd" type="Script" id=3]
-[ext_resource path="res://script/Tab.gd" type="Script" id=4]
+[ext_resource path="res://script/game/Game.gd" type="Script" id=3]
+[ext_resource path="res://script/gui/Tab.gd" type="Script" id=4]
 [ext_resource path="res://font/Alibaba-PuHuiTi-Regular.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://font/20.tres" type="DynamicFont" id=6]
-[ext_resource path="res://script/MorphPanel.gd" type="Script" id=7]
-[ext_resource path="res://script/GridContainer.gd" type="Script" id=8]
+[ext_resource path="res://script/gui/MorphPanel.gd" type="Script" id=7]
+[ext_resource path="res://script/gui/GridContainer.gd" type="Script" id=8]
 [ext_resource path="res://styles/Panel.tres" type="StyleBox" id=9]
-[ext_resource path="res://script/transVbox.gd" type="Script" id=10]
+[ext_resource path="res://script/gui/transVbox.gd" type="Script" id=10]
 
 [sub_resource type="QuadMesh" id=1]
 size = Vector2( 2000, 2000 )
@@ -20,13 +20,7 @@ albedo_color = Color( 0.541176, 0.741176, 0.45098, 1 )
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 421.638, 1, 432.372 )
 
-[sub_resource type="Curve3D" id=4]
-_data = {
-"points": PoolVector3Array(  ),
-"tilts": PoolRealArray(  )
-}
-
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 20
 font_data = ExtResource( 5 )
 
@@ -155,12 +149,6 @@ position = Vector2( 881.497, 492.173 )
 [node name="stomp" type="TouchScreenButton" parent="Control"]
 position = Vector2( 949.302, 496.411 )
 
-[node name="Path" type="Path" parent="."]
-curve = SubResource( 4 )
-
-[node name="PathFollow" type="PathFollow" parent="Path"]
-transform = Transform( -0.863212, 0.341136, -0.372143, 0.401986, 0.910399, -0.0978907, 0.305404, -0.234097, -0.922999, 12.5925, 0, -1.49862 )
-
 [node name="Spatial" type="Spatial" parent="."]
 
 [node name="1" type="Position3D" parent="Spatial" groups=[
@@ -234,7 +222,7 @@ __meta__ = {
 [node name="Giantess" type="Button" parent="Tab/HBoxContainer"]
 margin_right = 94.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = true
 text = "Giantess"
 __meta__ = {
@@ -245,7 +233,7 @@ __meta__ = {
 margin_left = 98.0
 margin_right = 150.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "物体"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -255,7 +243,7 @@ __meta__ = {
 margin_left = 154.0
 margin_right = 206.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "变换"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -265,7 +253,7 @@ __meta__ = {
 margin_left = 210.0
 margin_right = 262.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = true
 text = "动画"
 __meta__ = {
@@ -276,7 +264,7 @@ __meta__ = {
 margin_left = 266.0
 margin_right = 318.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "姿态"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -286,7 +274,7 @@ __meta__ = {
 margin_left = 322.0
 margin_right = 374.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 toggle_mode = true
 text = "表情"
 __meta__ = {
@@ -297,7 +285,7 @@ __meta__ = {
 margin_left = 378.0
 margin_right = 430.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "移动"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -307,7 +295,7 @@ __meta__ = {
 margin_left = 434.0
 margin_right = 486.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "菜单"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -317,7 +305,7 @@ __meta__ = {
 margin_left = 490.0
 margin_right = 542.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 text = "关闭"
 __meta__ = {
 "_edit_use_anchors_": false

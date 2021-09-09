@@ -23,7 +23,7 @@ var rotate_speed=0.2
 var action
 var grow_speed=0.25
 #var selected=false
-var select_obj
+
 enum player_actions{fly,idle,walk}
 var player_action
 signal selected
@@ -113,16 +113,7 @@ func _on_Tab_track_enable():
 	if self.name=="anata":
 		$h.track_mouse=true
 		print_debug($h.track_mouse)
-func _on_StaticBody_input_event(camera, event, click_position, click_normal, shape_idx):
-	if "alice" in self.name:
-		if event is InputEventMouseButton:
-			if event.button_index==BUTTON_RIGHT:
-				$vbox.show()
-				var pos=camera.unproject_position(click_position)
-				print_debug(pos)
-				$vbox.set_global_position(pos)
-				select_obj=self
-				emit_signal("selected",select_obj)
+
 func _on_grow_pressed():
 	if self.name=="alice":
 		action="grow_other"
