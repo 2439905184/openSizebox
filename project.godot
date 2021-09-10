@@ -126,6 +126,11 @@ config/name="openSizebox"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/Godot-MToon-Shader/plugin.cfg", "res://addons/bone_editor/plugin.cfg", "res://addons/godotTranslation/slgongfang-SLGFopen-SLGFopen_HanHua-1.0/addons/GodotInterfaceTranslation/plugin.cfg" )

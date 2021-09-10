@@ -2,7 +2,10 @@ extends KinematicBody
 enum action{grow,small,stop_grow}
 var grow_speed=0.25
 var act
-
+signal selected
+func _ready():
+	connect("selected",get_tree().current_scene.get_node("."),"_on_obj_selected",[])
+	pass
 func _process(delta):
 	if act == action.grow:
 		change_scale("big",delta)
@@ -21,6 +24,8 @@ func change_scale(mode,delta):
 	if mode == "small":
 		self.scale-=Vector3(1,1,1)*grow_speed*delta
 func _on_select_pressed():
+	$vbox.hide()
+	emit_signal("selected",self)
 	pass # Replace with function body.
 func _on_close_pressed():
 	$vbox.hide()

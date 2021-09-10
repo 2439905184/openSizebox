@@ -72,4 +72,8 @@ func _on_slider_rot_z_value_changed(value):
 func _on_Move_pressed():
 	if sel_obj!=null:
 		placed=false
-	pass # Replace with function body.
+	pass
+#选中了对象 alice被选中 gts被选中等 接受信号的地方
+func _on_obj_selected(obj):
+	sel_obj=obj
+	$tip.text="选中的对象:"+str(sel_obj)
