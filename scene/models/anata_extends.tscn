@@ -178,7 +178,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0204211, 0.192818, -0.037480
 script = ExtResource( 3 )
 
 [node name="Left arm" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder" index="0" instance=ExtResource( 2 )]
-transform = Transform( 0.225173, 0.95959, 0.168775, -0.767841, 0.281403, -0.575528, -0.599764, 4.17233e-07, 0.800177, 0.0787217, -0.0135645, 0.00489305 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0787217, -0.0135645, 0.00489305 )
 script = ExtResource( 3 )
 
 [node name="Left elbow" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm" index="0" instance=ExtResource( 2 )]
@@ -254,7 +254,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0204211, 0.192819, -0.03748
 script = ExtResource( 3 )
 
 [node name="Right arm" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder" index="0" instance=ExtResource( 2 )]
-transform = Transform( 0.246625, -0.944428, 0.217329, 0.708568, 0.328718, 0.6244, -0.661141, 5.96046e-08, 0.750261, -0.0787217, -0.0135643, 0.004893 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0787217, -0.0135643, 0.004893 )
 script = ExtResource( 3 )
 
 [node name="Right elbow" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm" index="0" instance=ExtResource( 2 )]
@@ -326,59 +326,59 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0184302, -0.00130835, 0.017
 script = ExtResource( 3 )
 
 [node name="Left leg" type="Spatial" parent="BoneEditor/Hips" index="1" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 0.91131, -0.411721, 0, 0.411721, 0.91131, 0.0703543, -0.027843, 0.00135354 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0703543, -0.027843, 0.00135354 )
 script = ExtResource( 3 )
 
 [node name="J_Sec_L_SkirtBack" type="Spatial" parent="BoneEditor/Hips/Left leg" index="0" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000985684, 0.0126483, -0.111209 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00336307, -0.0341593, -0.106538 )
 script = ExtResource( 3 )
 
 [node name="J_Sec_L_SkirtFront" type="Spatial" parent="BoneEditor/Hips/Left leg" index="1" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0155088, -0.0912207, 0.0798754 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0114405, -0.0506425, 0.110662 )
 script = ExtResource( 3 )
 
 [node name="J_Sec_L_SkirtSide" type="Spatial" parent="BoneEditor/Hips/Left leg" index="2" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.088533, -0.0403555, -0.0116919 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0894255, -0.0399368, 0.00338744 )
 script = ExtResource( 3 )
 
 [node name="Left knee" type="Spatial" parent="BoneEditor/Hips/Left leg" index="3" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0248757, -0.296639, -0.140632 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0189182, -0.328632, -0.00584653 )
 script = ExtResource( 3 )
 
 [node name="Left ankle" type="Spatial" parent="BoneEditor/Hips/Left leg/Left knee" index="0" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0158874, -0.332494, -0.171785 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00947322, -0.373943, -0.0197959 )
 script = ExtResource( 3 )
 
 [node name="Left toe" type="Spatial" parent="BoneEditor/Hips/Left leg/Left knee/Left ankle" index="0" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0019038, -0.0877348, 0.0661217 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00180761, -0.0528591, 0.0963102 )
 script = ExtResource( 3 )
 
 [node name="Right leg" type="Spatial" parent="BoneEditor/Hips" index="2" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 0.922349, 0.386357, 0, -0.386357, 0.922349, -0.0703543, -0.027843, 0.00135355 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0703543, -0.027843, 0.00135355 )
 script = ExtResource( 3 )
 
 [node name="J_Sec_R_SkirtBack" type="Spatial" parent="BoneEditor/Hips/Right leg" index="0" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00430391, -0.0726297, -0.085057 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00336706, -0.0341593, -0.106537 )
 script = ExtResource( 3 )
 
 [node name="J_Sec_R_SkirtFront" type="Spatial" parent="BoneEditor/Hips/Right leg" index="1" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00836801, -0.0042659, 0.121962 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0116382, -0.0506508, 0.110734 )
 script = ExtResource( 3 )
 
 [node name="J_Sec_R_SkirtSide" type="Spatial" parent="BoneEditor/Hips/Right leg" index="2" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0905007, -0.0339434, 0.0161526 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0894259, -0.0399367, 0.00339038 )
 script = ExtResource( 3 )
 
 [node name="Right knee" type="Spatial" parent="BoneEditor/Hips/Right leg" index="3" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0102808, -0.305784, 0.121577 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0189194, -0.328631, -0.00584574 )
 script = ExtResource( 3 )
 
 [node name="Right ankle" type="Spatial" parent="BoneEditor/Hips/Right leg/Right knee" index="0" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000120435, -0.352796, 0.125898 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00947556, -0.373943, -0.019795 )
 script = ExtResource( 3 )
 
 [node name="Right toe" type="Spatial" parent="BoneEditor/Hips/Right leg/Right knee/Right ankle" index="0" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0048824, -0.0116219, 0.109152 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00181023, -0.0528592, 0.0963101 )
 script = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]

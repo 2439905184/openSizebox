@@ -21,12 +21,9 @@ func _process(delta):
 		#$anata/Armature/Skeleton.rotation.y=$anata/h.rotation.y
 		pass
 	if Input.is_action_pressed("walk"):
-		move_and_slide(Vector3(0,0,move_speed))
-		if !foot.is_playing():
-			foot.play()
-		if !anim.is_playing():
-			#print_debug("走路状态")
-			anim.play("walk")
+		walk("front")
+	if Input.is_action_pressed("walk_back"):
+		walk("back")
 	#变大变小
 	if Input.is_action_pressed("grow"):
 		self.scale+=Vector3(grow_speed,grow_speed,grow_speed)
@@ -34,6 +31,18 @@ func _process(delta):
 	if Input.is_action_pressed("small"):
 		self.scale-=Vector3(grow_speed,grow_speed,grow_speed)
 		show_size()
+func walk(dir):
+	if dir == "front":
+		move_and_slide(Vector3(0,0,move_speed))
+		pass
+	if dir == "back":
+		move_and_slide(Vector3(0,0,-move_speed))
+	if !foot.is_playing():
+		foot.play()
+	if !anim.is_playing():
+		anim.play("walk")
+		pass
+	pass
 func _input(event):
 	if event.is_action_pressed("fly"):
 		state = all_state.fly_float

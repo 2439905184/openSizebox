@@ -25,12 +25,13 @@ func _process(delta):
 
 func _on_StaticBody_input_event(camera, event, click_position, click_normal, shape_idx):
 	if sel_obj != null:
-		if event is InputEventMouseMotion and placed==false:
-			sel_obj.translation=click_position
-		if event is InputEventMouseButton and placed==false:
-			placed = true
+		if event is InputEventMouseMotion and placed == false:
 			sel_obj.translation = click_position
-		print_debug(placed)
+		if event is InputEventMouseButton and placed == false:
+			placed = true
+			#sel_obj.translation = click_position
+		#print_debug("放下",placed)
+	#print_debug(camera)
 #选择了gts 准备放置
 func _on_GridContainer_select(select_obj):
 	sel_obj = select_obj

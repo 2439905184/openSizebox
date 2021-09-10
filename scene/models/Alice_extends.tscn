@@ -12,6 +12,7 @@ script = ExtResource( 7 )
 [node name="BoneEditor" type="Spatial" parent="." index="1"]
 script = ExtResource( 3 )
 control_skeleton = NodePath("../Armature/Skeleton")
+edit_animation_player = NodePath("../AnimationPlayer")
 
 [node name="Hips" type="Spatial" parent="BoneEditor" index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03749e-06, 0.918388, 2.15708e-16 )
@@ -436,3 +437,5 @@ script = ExtResource( 4 )
 [node name="Thumb2_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/Thumb0_R/Thumb1_R" index="0" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0196648, -0.00802299, 0.00169603 )
 script = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
