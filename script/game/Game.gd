@@ -29,8 +29,7 @@ func _on_StaticBody_input_event(camera, event, click_position, click_normal, sha
 			sel_obj.translation = click_position
 		if event is InputEventMouseButton and placed == false:
 			placed = true
-			#sel_obj.translation = click_position
-		#print_debug("放下",placed)
+			print_debug("放置",placed)
 	#print_debug(camera)
 #选择了gts 准备放置
 func _on_GridContainer_select(select_obj):

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.239216, 0.964706, 0.215686, 1 )
+
+[node name="place_tip" type="CSGCylinder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0932379, 0 )
+radius = 0.219562
+height = 0.18801
+sides = 16
+material = SubResource( 3 )

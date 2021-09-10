@@ -3,6 +3,7 @@
 [ext_resource path="res://scene/models/Alice_extends.tscn" type="PackedScene" id=1]
 [ext_resource path="res://script/giantess/Alice_body.gd" type="Script" id=2]
 [ext_resource path="res://font/Alibaba-PuHuiTi-Regular.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://scene/place_tip.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.23871
@@ -12,14 +13,11 @@ height = 0.948141
 size = 20
 font_data = ExtResource( 3 )
 
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.239216, 0.964706, 0.215686, 1 )
-
 [node name="alice" type="KinematicBody"]
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00678205, 0.810482, -3.54273e-08 )
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00678205, 0.943205, -4.12288e-08 )
 shape = SubResource( 1 )
 
 [node name="model" parent="." instance=ExtResource( 1 )]
@@ -103,12 +101,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MeshInstance" type="CSGCylinder" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0932379, 0 )
-radius = 0.219562
-height = 0.18801
-sides = 16
-material = SubResource( 3 )
+[node name="place_tip" parent="." instance=ExtResource( 4 )]
 
 [connection signal="input_event" from="." to="." method="_on_alice_input_event"]
 [connection signal="pressed" from="vbox/select" to="." method="_on_select_pressed"]
