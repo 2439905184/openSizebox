@@ -4,6 +4,6 @@ demo.apk
 export.cfg
 export_presets.cfg
 demo/android
-
+*.materail
 # Mono-specific ignores
 .mono/

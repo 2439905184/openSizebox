@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/CG4.fbx-1a3c5725e055835e77ab151045821234.scn"
+path="res://.import/lily.glb-4b851f7392c9d8c2827ab5ad0f872e09.scn"
 
 [deps]
 
-source_file="res://models/unused/cg4/CG4.fbx"
-dest_files=[ "res://.import/CG4.fbx-1a3c5725e055835e77ab151045821234.scn" ]
+source_file="res://models/lily/lily.glb"
+dest_files=[ "res://.import/lily.glb-4b851f7392c9d8c2827ab5ad0f872e09.scn" ]
 
 [params]
 

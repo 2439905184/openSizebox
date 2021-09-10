@@ -13,7 +13,7 @@ var target
 var track_mouse=true
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	target=find_parent("anata").get_node("Skeleton")
+	target=find_parent("anata").get_node("Armature")
 	pass
 func _input(event):
 	#缩小
