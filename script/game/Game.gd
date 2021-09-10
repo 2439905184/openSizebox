@@ -68,3 +68,8 @@ func _on_slider_rot_y_value_changed(value):
 func _on_slider_rot_z_value_changed(value):
 	if sel_obj!=null:
 		sel_obj.rotation_degrees.z=value
+#移动选中的对象
+func _on_Move_pressed():
+	if sel_obj!=null:
+		placed=false
+	pass # Replace with function body.

@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://models/anata/anata.glb" type="PackedScene" id=1]
+[ext_resource path="res://addons/bone_editor/BoneHandle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/bone_editor/BoneHandle.gd" type="Script" id=3]
+[ext_resource path="res://addons/bone_editor/BoneEditor.gd" type="Script" id=4]
 [ext_resource path="res://script/Third.gd" type="Script" id=5]
-[ext_resource path="res://font/40.tres" type="DynamicFont" id=6]
+[ext_resource path="res://anim/walk.tres" type="Animation" id=7]
 [ext_resource path="res://script/anata.gd" type="Script" id=8]
 
 [sub_resource type="AnimationNodeAnimation" id=1]
@@ -28,27 +31,355 @@ node_connections = [ "output", 0, "walk", "walk", 0, "Animation", "walk", 1, "An
 script = ExtResource( 8 )
 
 [node name="h" type="Spatial" parent="." index="3"]
-transform = Transform( 0.999997, 0, 0.00256563, 0, 1, 0, -0.00256563, 0, 0.999997, 0, 0, 0 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0408897, 0.729776, -0.741852 )
 script = ExtResource( 5 )
 
 [node name="v" type="Spatial" parent="h" index="0"]
 
 [node name="Camera" type="Camera" parent="h/v" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.996309, 1.49985 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.72529e-08, 0.446512, 1.21036 )
 current = true
 
-[node name="Label" type="Label" parent="." index="4"]
-visible = false
-margin_left = 409.0
-margin_top = 486.0
-margin_right = 528.0
-margin_bottom = 541.0
-custom_fonts/font = ExtResource( 6 )
-text = "Size:1单位"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationTree" type="AnimationTree" parent="." index="5"]
+[node name="AnimationTree" type="AnimationTree" parent="." index="4"]
 tree_root = SubResource( 4 )
 parameters/walk/blend_amount = 0.0
+
+[node name="BoneEditor" type="Spatial" parent="." index="5"]
+script = ExtResource( 4 )
+control_skeleton = NodePath("../Armature/Skeleton")
+edit_animation_player = NodePath("../AnimationPlayer")
+
+[node name="Hips" type="Spatial" parent="BoneEditor" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000233725, 0.819625, 0 )
+script = ExtResource( 3 )
+
+[node name="Spine" type="Spatial" parent="BoneEditor/Hips" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3237e-09, 0.0565298, 0.0154386 )
+script = ExtResource( 3 )
+
+[node name="Chest" type="Spatial" parent="BoneEditor/Hips/Spine" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.35283e-08, 0.108478, 0.0124319 )
+script = ExtResource( 3 )
+
+[node name="Breast_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0495937, 0.0883875, 0.0414409 )
+script = ExtResource( 3 )
+
+[node name="J_Sec_L_Bust2" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Breast_L" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0219822, 0.00471504, 0.0430377 )
+script = ExtResource( 3 )
+
+[node name="Breast_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest" index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0495937, 0.0883875, 0.041441 )
+script = ExtResource( 3 )
+
+[node name="J_Sec_R_Bust2" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Breast_R" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0219823, 0.00471481, 0.0430377 )
+script = ExtResource( 3 )
+
+[node name="Neck" type="Spatial" parent="BoneEditor/Hips/Spine/Chest" index="2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.60005e-08, 0.217769, -0.0429107 )
+script = ExtResource( 3 )
+
+[node name="Head" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.13948e-08, 0.0650676, 0.00838646 )
+script = ExtResource( 3 )
+
+[node name="Eye_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019721, 0.05882, 0.0268402 )
+script = ExtResource( 3 )
+
+[node name="Eye_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head" index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0197209, 0.0588201, 0.0268402 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_092343d0_7017_41c9_b7c9_415c4a3ede87" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head" index="2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.087756, 0.076496, 0.0274441 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_f93d03f1_bd4d_4ef9_a2a1_94de54c9bd35" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head/HairJoint_092343d0_7017_41c9_b7c9_415c4a3ede87" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0061075, -0.113014, 0.0297307 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_1e560b56_6648_478f_8939_018ebb69f892" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head" index="3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0862677, 0.0723765, 0.0284235 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_a61242fe_12c4_4754_b65a_1a97f0ec86cb" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head/HairJoint_1e560b56_6648_478f_8939_018ebb69f892" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00496497, -0.110938, 0.0292854 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_d7bc108c_ac4a_4bbf_9288_c037a5806a8d" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head" index="4" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0828013, 0.0696667, 0.0505147 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_989e87fe_41bb_4aa3_92ed_f2cadf081fdb" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head" index="5" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0828013, 0.0696669, 0.0505146 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_72b70291_010a_4d9b_b372_bd71544468e6" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head" index="6" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0945068, -0.00521159, -0.00966861 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_2688f740_0eec_4fc9_bb07_d7d39e9f8837" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head/HairJoint_72b70291_010a_4d9b_b372_bd71544468e6" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0388727, -0.137648, -0.00444062 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_35e22739_5b6f_45f5_99d0_f10c126b92aa" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head/HairJoint_72b70291_010a_4d9b_b372_bd71544468e6/HairJoint_2688f740_0eec_4fc9_bb07_d7d39e9f8837" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0205542, -0.14164, -0.00578535 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_98251900_0650_4bb9_b165_240a2131051b" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head" index="7" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.075853, -0.00624405, -0.0648512 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_ebb8a1ef_47ff_42aa_b08e_1001c9d138c1" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head/HairJoint_98251900_0650_4bb9_b165_240a2131051b" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0375514, -0.207684, -0.0345114 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_e2773503_10e3_42cf_84db_6c93bab292d0" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head" index="8" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0308403, -0.0040345, -0.0987153 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_255c6ad4_2654_4f34_9062_9edc22eefe19" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head/HairJoint_e2773503_10e3_42cf_84db_6c93bab292d0" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0124801, -0.208597, -0.0504502 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_ca34e1ab_aab9_42f3_a3c4_f80b4fed1ca6" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head" index="9" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0311803, -0.0070114, -0.0998159 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_515c1561_c01a_4c8b_a17d_a318b10f5bca" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head/HairJoint_ca34e1ab_aab9_42f3_a3c4_f80b4fed1ca6" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012166, -0.207202, -0.0495594 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_feac1d72_131e_40d1_ad6d_3f95a809ba42" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head" index="10" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0754209, -0.00475274, -0.0644948 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_f5f28950_7c05_4f32_9f95_0c3e5cf9ca94" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head/HairJoint_feac1d72_131e_40d1_ad6d_3f95a809ba42" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0379145, -0.208386, -0.0347847 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_637ac0aa_0682_4352_a675_a43ea0c0ad0a" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head" index="11" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0950555, -0.00670478, -0.00970888 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_1b0b676d_788f_4528_af7e_aad6d824fe14" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head/HairJoint_637ac0aa_0682_4352_a675_a43ea0c0ad0a" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0385261, -0.137196, -0.00444031 )
+script = ExtResource( 3 )
+
+[node name="HairJoint_d91d29bf_8428_4169_b9eb_a612a8e2de5e" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Neck/Head/HairJoint_637ac0aa_0682_4352_a675_a43ea0c0ad0a/HairJoint_1b0b676d_788f_4528_af7e_aad6d824fe14" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.020411, -0.141126, -0.00576937 )
+script = ExtResource( 3 )
+
+[node name="Left shoulder" type="Spatial" parent="BoneEditor/Hips/Spine/Chest" index="3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0204211, 0.192818, -0.0374803 )
+script = ExtResource( 3 )
+
+[node name="Left arm" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder" index="0" instance=ExtResource( 2 )]
+transform = Transform( 0.225173, 0.95959, 0.168775, -0.767841, 0.281403, -0.575528, -0.599764, 4.17233e-07, 0.800177, 0.0787217, -0.0135645, 0.00489305 )
+script = ExtResource( 3 )
+
+[node name="Left elbow" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.199394, -0.00928437, 0.00167279 )
+script = ExtResource( 3 )
+
+[node name="Left wrist" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.192999, -0.000420897, 0.0159313 )
+script = ExtResource( 3 )
+
+[node name="IndexFinger1_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.055339, 0.00497357, 0.0190684 )
+script = ExtResource( 3 )
+
+[node name="IndexFinger2_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist/IndexFinger1_L" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0284348, -0.000110296, 0.00453741 )
+script = ExtResource( 3 )
+
+[node name="IndexFinger3_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist/IndexFinger1_L/IndexFinger2_L" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0176012, -0.00059382, 0.00201373 )
+script = ExtResource( 3 )
+
+[node name="LittleFinger1_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist" index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0548975, 0.00273259, -0.0241577 )
+script = ExtResource( 3 )
+
+[node name="LittleFinger2_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist/LittleFinger1_L" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0272149, -0.000242884, -5.66515e-05 )
+script = ExtResource( 3 )
+
+[node name="LittleFinger3_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist/LittleFinger1_L/LittleFinger2_L" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0156552, 0.000601337, -0.000888001 )
+script = ExtResource( 3 )
+
+[node name="MiddleFinger1_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist" index="2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0572916, 0.00744356, 0.00413637 )
+script = ExtResource( 3 )
+
+[node name="MiddleFinger2_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist/MiddleFinger1_L" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0319783, -0.00119466, 0.00209319 )
+script = ExtResource( 3 )
+
+[node name="MiddleFinger3_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist/MiddleFinger1_L/MiddleFinger2_L" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0196586, -0.00213494, 0.000781214 )
+script = ExtResource( 3 )
+
+[node name="RingFinger1_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist" index="3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0578229, 0.00735931, -0.00997051 )
+script = ExtResource( 3 )
+
+[node name="RingFinger2_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist/RingFinger1_L" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0297493, -0.000478044, 7.0578e-05 )
+script = ExtResource( 3 )
+
+[node name="RingFinger3_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist/RingFinger1_L/RingFinger2_L" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0171582, 0.000622401, 0.000176065 )
+script = ExtResource( 3 )
+
+[node name="Thumb0_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist" index="4" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00171828, -0.0061105, 0.0158753 )
+script = ExtResource( 3 )
+
+[node name="Thumb1_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist/Thumb0_L" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0279047, -0.0023471, 0.0298476 )
+script = ExtResource( 3 )
+
+[node name="Thumb2_L" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm/Left elbow/Left wrist/Thumb0_L/Thumb1_L" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0184368, -0.00131478, 0.0170023 )
+script = ExtResource( 3 )
+
+[node name="Right shoulder" type="Spatial" parent="BoneEditor/Hips/Spine/Chest" index="4" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0204211, 0.192819, -0.0374802 )
+script = ExtResource( 3 )
+
+[node name="Right arm" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder" index="0" instance=ExtResource( 2 )]
+transform = Transform( 0.246625, -0.944428, 0.217329, 0.708568, 0.328718, 0.6244, -0.661141, 5.96046e-08, 0.750261, -0.0787217, -0.0135643, 0.004893 )
+script = ExtResource( 3 )
+
+[node name="Right elbow" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.199397, -0.00927604, 0.00158343 )
+script = ExtResource( 3 )
+
+[node name="Right wrist" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.192995, -0.000404359, 0.0159596 )
+script = ExtResource( 3 )
+
+[node name="IndexFinger1_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0553366, 0.00496359, 0.0190782 )
+script = ExtResource( 3 )
+
+[node name="IndexFinger2_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/IndexFinger1_R" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0284343, -0.000114314, 0.00454218 )
+script = ExtResource( 3 )
+
+[node name="IndexFinger3_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/IndexFinger1_R/IndexFinger2_R" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0176009, -0.000596199, 0.00201657 )
+script = ExtResource( 3 )
+
+[node name="LittleFinger1_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist" index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0549015, 0.00273057, -0.0241484 )
+script = ExtResource( 3 )
+
+[node name="LittleFinger2_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/LittleFinger1_R" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0272147, -0.000245949, -5.16861e-05 )
+script = ExtResource( 3 )
+
+[node name="LittleFinger3_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/LittleFinger1_R/LittleFinger2_R" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0156556, 0.000599889, -0.000885064 )
+script = ExtResource( 3 )
+
+[node name="MiddleFinger1_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist" index="2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0572916, 0.00743594, 0.00414685 )
+script = ExtResource( 3 )
+
+[node name="MiddleFinger2_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/MiddleFinger1_R" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0319777, -0.00119845, 0.00209805 )
+script = ExtResource( 3 )
+
+[node name="MiddleFinger3_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/MiddleFinger1_R/MiddleFinger2_R" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0196582, -0.00213753, 0.000784003 )
+script = ExtResource( 3 )
+
+[node name="RingFinger1_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist" index="3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0578253, 0.00735421, -0.00995998 )
+script = ExtResource( 3 )
+
+[node name="RingFinger2_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/RingFinger1_R" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0297493, -0.000481437, 7.54293e-05 )
+script = ExtResource( 3 )
+
+[node name="RingFinger3_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/RingFinger1_R/RingFinger2_R" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0171583, 0.000620249, 0.000179008 )
+script = ExtResource( 3 )
+
+[node name="Thumb0_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist" index="4" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00171506, -0.00611346, 0.0158745 )
+script = ExtResource( 3 )
+
+[node name="Thumb1_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/Thumb0_R" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.027891, -0.00233556, 0.029862 )
+script = ExtResource( 3 )
+
+[node name="Thumb2_R" type="Spatial" parent="BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm/Right elbow/Right wrist/Thumb0_R/Thumb1_R" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0184302, -0.00130835, 0.0170103 )
+script = ExtResource( 3 )
+
+[node name="Left leg" type="Spatial" parent="BoneEditor/Hips" index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.91131, -0.411721, 0, 0.411721, 0.91131, 0.0703543, -0.027843, 0.00135354 )
+script = ExtResource( 3 )
+
+[node name="J_Sec_L_SkirtBack" type="Spatial" parent="BoneEditor/Hips/Left leg" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000985684, 0.0126483, -0.111209 )
+script = ExtResource( 3 )
+
+[node name="J_Sec_L_SkirtFront" type="Spatial" parent="BoneEditor/Hips/Left leg" index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0155088, -0.0912207, 0.0798754 )
+script = ExtResource( 3 )
+
+[node name="J_Sec_L_SkirtSide" type="Spatial" parent="BoneEditor/Hips/Left leg" index="2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.088533, -0.0403555, -0.0116919 )
+script = ExtResource( 3 )
+
+[node name="Left knee" type="Spatial" parent="BoneEditor/Hips/Left leg" index="3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0248757, -0.296639, -0.140632 )
+script = ExtResource( 3 )
+
+[node name="Left ankle" type="Spatial" parent="BoneEditor/Hips/Left leg/Left knee" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0158874, -0.332494, -0.171785 )
+script = ExtResource( 3 )
+
+[node name="Left toe" type="Spatial" parent="BoneEditor/Hips/Left leg/Left knee/Left ankle" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0019038, -0.0877348, 0.0661217 )
+script = ExtResource( 3 )
+
+[node name="Right leg" type="Spatial" parent="BoneEditor/Hips" index="2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 0.922349, 0.386357, 0, -0.386357, 0.922349, -0.0703543, -0.027843, 0.00135355 )
+script = ExtResource( 3 )
+
+[node name="J_Sec_R_SkirtBack" type="Spatial" parent="BoneEditor/Hips/Right leg" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00430391, -0.0726297, -0.085057 )
+script = ExtResource( 3 )
+
+[node name="J_Sec_R_SkirtFront" type="Spatial" parent="BoneEditor/Hips/Right leg" index="1" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00836801, -0.0042659, 0.121962 )
+script = ExtResource( 3 )
+
+[node name="J_Sec_R_SkirtSide" type="Spatial" parent="BoneEditor/Hips/Right leg" index="2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0905007, -0.0339434, 0.0161526 )
+script = ExtResource( 3 )
+
+[node name="Right knee" type="Spatial" parent="BoneEditor/Hips/Right leg" index="3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0102808, -0.305784, 0.121577 )
+script = ExtResource( 3 )
+
+[node name="Right ankle" type="Spatial" parent="BoneEditor/Hips/Right leg/Right knee" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000120435, -0.352796, 0.125898 )
+script = ExtResource( 3 )
+
+[node name="Right toe" type="Spatial" parent="BoneEditor/Hips/Right leg/Right knee/Right ankle" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0048824, -0.0116219, 0.109152 )
+script = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+anims/walk = ExtResource( 7 )

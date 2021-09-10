@@ -129,7 +129,7 @@ material/93 = null
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 
 [node name="floor" type="MeshInstance" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.98453 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60.742 )
 visible = false
 mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
@@ -314,17 +314,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="."]
-margin_left = 870.0
-margin_top = 276.0
-margin_right = 910.0
-margin_bottom = 304.0
-custom_fonts/font = ExtResource( 6 )
-text = "变换"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TransfromPanel" type="Panel" parent="."]
 visible = false
 margin_left = 796.0
@@ -431,6 +420,17 @@ margin_bottom = 236.0
 custom_fonts/font = ExtResource( 6 )
 text = "size:1"
 align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="TransfromPanel"]
+margin_left = 74.0
+margin_top = 19.0
+margin_right = 114.0
+margin_bottom = 47.0
+custom_fonts/font = ExtResource( 6 )
+text = "变换"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -581,10 +581,12 @@ text = "angry"
 [connection signal="select" from="GridContainer" to="." method="_on_GridContainer_select"]
 [connection signal="pressed" from="GridContainer/Alice" to="GridContainer" method="_on_Alice_pressed"]
 [connection signal="pressed" from="GridContainer/lilylily" to="GridContainer" method="_on_lilylily_pressed"]
+[connection signal="track_enable" from="Tab" to="player" method="_on_Tab_track_enable"]
 [connection signal="toggled" from="Tab/HBoxContainer/Giantess" to="GridContainer" method="_on_Giantess_toggled"]
 [connection signal="toggled" from="Tab/HBoxContainer/Transform" to="." method="_on_Transform_toggled"]
 [connection signal="toggled" from="Tab/HBoxContainer/Animation" to="." method="_on_Animation_toggled"]
 [connection signal="toggled" from="Tab/HBoxContainer/morph" to="MorphPanel" method="_on_morph_toggled"]
+[connection signal="pressed" from="Tab/HBoxContainer/Move" to="." method="_on_Move_pressed"]
 [connection signal="pressed" from="Tab/HBoxContainer/Close" to="Tab" method="_on_Close_pressed"]
 [connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_x" to="." method="_on_slider_rot_x_value_changed"]
 [connection signal="value_changed" from="TransfromPanel/transVbox/slider_rot_y" to="." method="_on_slider_rot_y_value_changed"]

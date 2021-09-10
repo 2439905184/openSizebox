@@ -3,7 +3,7 @@
 [resource]
 resource_name = "walk"
 tracks/0/type = "value"
-tracks/0/path = NodePath("BoneEditor/Root/J_Bip_C_Hips/J_Bip_L_UpperLeg:rotation_degrees")
+tracks/0/path = NodePath("BoneEditor/Hips/Left leg:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -15,7 +15,7 @@ tracks/0/keys = {
 "values": [ Vector3( 24.313, 0, 0 ), Vector3( -24.313, 0, 0 ), Vector3( 24.313, 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BoneEditor/Root/J_Bip_C_Hips/J_Bip_R_UpperLeg:rotation_degrees")
+tracks/1/path = NodePath("BoneEditor/Hips/Right leg:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -27,7 +27,7 @@ tracks/1/keys = {
 "values": [ Vector3( -22.728, 0, 0 ), Vector3( 22.728, 0, 0 ), Vector3( -22.728, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BoneEditor/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_R_Shoulder/J_Bip_R_UpperArm:rotation_degrees")
+tracks/2/path = NodePath("BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -39,7 +39,7 @@ tracks/2/keys = {
 "values": [ Vector3( 35.1366, 11.9104, -69.8728 ), Vector3( -33.7435, -11.2972, -70.2196 ), Vector3( 35.1366, 11.9104, -69.8728 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("BoneEditor/Root/J_Bip_C_Hips/J_Bip_C_Spine/J_Bip_C_Chest/J_Bip_C_UpperChest/J_Bip_L_Shoulder/J_Bip_L_UpperArm:rotation_degrees")
+tracks/3/path = NodePath("BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false

@@ -93,6 +93,11 @@ _global_script_classes=[ {
 "class": "VRMTopLevel",
 "language": "GDScript",
 "path": "res://addons/vrm/vrm_toplevel.gd"
+}, {
+"base": "Node",
+"class": "player",
+"language": "GDScript",
+"path": "res://script/player/player_class.gd"
 } ]
 _global_script_class_icons={
 "BoneHandle": "",
@@ -111,7 +116,8 @@ _global_script_class_icons={
 "GLTFState": "",
 "GLTFTexture": "",
 "PackedSceneGLTF": "",
-"VRMTopLevel": ""
+"VRMTopLevel": "",
+"player": ""
 }
 
 [application]

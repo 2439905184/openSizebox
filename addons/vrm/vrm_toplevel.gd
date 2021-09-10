@@ -12,8 +12,7 @@ export var update_secondary_fixed: bool = false
 export var update_in_editor: bool = false
 export var gizmo_spring_bone: bool = false
 export var gizmo_spring_bone_color: Color = Color.yellow
-var del=0.05
-var speed=2
+
 #掉落速度
 var drop_speed=8
 #onready var third=$thrid
@@ -37,38 +36,17 @@ func _ready():
 		print_debug(anim_tree)
 		print_debug(anim_playback)
 	pass
-func show_size():
-	if not $Label.visible:
-		$Label.show()
-	$Label.text="Size:"+str(self.scale.x)
+
 func _process(delta):
 	if self.name=="alice":
 		if action=="stop_other":
 			pass
 	if self.name=="anata":
-		if Input.is_action_pressed("grow"):
-			self.scale+=Vector3(del,del,del)
-			show_size()
-		if Input.is_action_pressed("small"):
-			self.scale-=Vector3(del,del,del)
-			show_size()
 		if Input.is_action_just_pressed("jump"):
 			self.translation.y+=10
 		if self.translation.y>0:
 			self.translation.y-=drop_speed*delta
 			print_debug("下落")
-		if Input.is_action_just_released("walk"):
-			anim_playback.travel("idle")
-		if Input.is_action_just_pressed("walk"):
-			$Skeleton.rotation.y=$h.rotation.y
-			$Skeleton.translate_object_local(Vector3(0,0,-speed*delta))
-			#if !anim.is_playing():
-			anim_playback.start("walk")
-			print_debug("走路状态")
-				#anim.play("walk")
-			if foot!=null:
-				if !foot.is_playing():
-					foot.play()
 func _input(event):
 	if self.name=="anata":
 		#F
