@@ -122,7 +122,7 @@ config/icon="res://icon.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/Godot-MToon-Shader/plugin.cfg", "res://addons/bone_editor/plugin.cfg", "res://addons/godotTranslation/slgongfang-SLGFopen-SLGFopen_HanHua-1.0/addons/GodotInterfaceTranslation/plugin.cfg", "res://addons/vrm/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/Godot-MToon-Shader/plugin.cfg", "res://addons/bone_editor/plugin.cfg", "res://addons/godotTranslation/slgongfang-SLGFopen-SLGFopen_HanHua-1.0/addons/GodotInterfaceTranslation/plugin.cfg" )
 
 [input]
 
