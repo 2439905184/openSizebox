@@ -123,7 +123,8 @@ _global_script_class_icons={
 [application]
 
 config/name="openSizebox"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://Main.tscn"
+boot_splash/image="res://img/work_studio.png"
 config/icon="res://icon.png"
 
 [display]

@@ -22,9 +22,7 @@ func _input(event):
 func _process(delta):
 	#s[index].translation,delta*speed)
 	pass
-# warning-ignore:unused_argument
-# warning-ignore:unused_argument
-# warning-ignore:unused_argument
+
 func _on_StaticBody_input_event(camera, event, click_position, click_normal, shape_idx):
 	if sel_obj != null:
 		if event is InputEventMouseMotion and placed==false:

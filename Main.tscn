@@ -1,0 +1,175 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://font/40.tres" type="DynamicFont" id=1]
+[ext_resource path="res://sound/start.mp3" type="AudioStream" id=2]
+[ext_resource path="res://script/Main.gd" type="Script" id=3]
+[ext_resource path="res://jietu1.png" type="Texture" id=4]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1023.0
+margin_bottom = 599.0
+color = Color( 0.396078, 0.560784, 0.360784, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menu" type="VBoxContainer" parent="."]
+margin_left = 318.0
+margin_top = 160.0
+margin_right = 649.0
+margin_bottom = 416.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="start" type="Button" parent="menu"]
+margin_right = 331.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "开始游戏"
+
+[node name="set" type="Button" parent="menu"]
+margin_top = 65.0
+margin_right = 331.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 1 )
+text = "设置"
+
+[node name="github" type="Button" parent="menu"]
+margin_top = 130.0
+margin_right = 331.0
+margin_bottom = 191.0
+custom_fonts/font = ExtResource( 1 )
+text = "访问此游戏github"
+
+[node name="exit" type="Button" parent="menu"]
+margin_top = 195.0
+margin_right = 331.0
+margin_bottom = 256.0
+custom_fonts/font = ExtResource( 1 )
+text = "退出"
+
+[node name="version" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 1 )
+text = "openSizebox-0.1 preview"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="copyright" type="Label" parent="."]
+margin_left = 375.639
+margin_top = 534.501
+margin_right = 1017.64
+margin_bottom = 589.501
+custom_fonts/font = ExtResource( 1 )
+text = "小沙盒工作室版权所有，开源gts游戏"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="map" type="Control" parent="."]
+visible = false
+margin_left = 253.0
+margin_top = 92.0
+margin_right = 742.0
+margin_bottom = 475.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="select" type="Label" parent="map"]
+margin_right = 312.0
+margin_bottom = 55.0
+custom_fonts/font = ExtResource( 1 )
+text = "选择要游玩的地图"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stage" type="TextureRect" parent="map"]
+margin_left = 11.515
+margin_top = 56.974
+margin_right = 1035.51
+margin_bottom = 656.974
+rect_min_size = Vector2( 400, 300 )
+rect_scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="map"]
+margin_left = -32.5929
+margin_top = 164.003
+margin_right = 771.407
+margin_bottom = 225.003
+custom_constants/separation = 500
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="left" type="Button" parent="map/HBoxContainer"]
+margin_right = 52.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 52, 61 )
+custom_fonts/font = ExtResource( 1 )
+text = "<-"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="right" type="Button" parent="map/HBoxContainer"]
+margin_left = 552.0
+margin_right = 604.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 52, 61 )
+custom_fonts/font = ExtResource( 1 )
+text = "->"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="map"]
+margin_left = 137.806
+margin_top = 375.662
+margin_right = 360.806
+margin_bottom = 436.662
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cancel" type="Button" parent="map/HBoxContainer2"]
+margin_right = 90.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 52, 61 )
+custom_fonts/font = ExtResource( 1 )
+text = "取消"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="startGame" type="Button" parent="map/HBoxContainer2"]
+margin_left = 94.0
+margin_right = 223.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 52, 61 )
+custom_fonts/font = ExtResource( 1 )
+text = "开始玩"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="menu/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="menu/github" to="." method="_on_github_pressed"]
+[connection signal="pressed" from="menu/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="map/HBoxContainer2/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="map/HBoxContainer2/startGame" to="." method="_on_startGame_pressed"]
