@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scene/models/anata.tscn" type="PackedScene" id=1]
 [ext_resource path="res://objects/library/library.obj" type="ArrayMesh" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://script/gui/GridContainer.gd" type="Script" id=8]
 [ext_resource path="res://styles/Panel.tres" type="StyleBox" id=9]
 [ext_resource path="res://script/gui/transVbox.gd" type="Script" id=10]
+[ext_resource path="res://tres/menuGroup.tres" type="ButtonGroup" id=11]
 
 [sub_resource type="QuadMesh" id=1]
 size = Vector2( 2000, 2000 )
@@ -174,6 +175,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8208, 0, 7.80043 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0224476, 0, 7.80043 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
+visible = false
 margin_left = 2.0
 margin_top = 10.0
 margin_right = 240.0
@@ -202,6 +204,30 @@ margin_top = 18.0
 margin_right = 64.0
 margin_bottom = 18.0
 
+[node name="object_panel" type="GridContainer" parent="."]
+visible = false
+margin_left = 2.0
+margin_top = 10.0
+margin_right = 240.0
+margin_bottom = 522.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="code_city" type="Button" parent="object_panel"]
+margin_right = 112.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 6 )
+text = "程序化城市"
+
+[node name="car" type="Button" parent="object_panel"]
+margin_top = 38.0
+margin_right = 112.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 6 )
+text = "汽车"
+
 [node name="Tab" type="Control" parent="."]
 margin_left = 10.0
 margin_top = 523.0
@@ -226,6 +252,7 @@ margin_right = 94.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 4 )
 toggle_mode = true
+group = ExtResource( 11 )
 text = "Giantess"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -236,6 +263,8 @@ margin_left = 98.0
 margin_right = 150.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 4 )
+toggle_mode = true
+group = ExtResource( 11 )
 text = "物体"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -247,6 +276,7 @@ margin_right = 206.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 4 )
 toggle_mode = true
+group = ExtResource( 11 )
 text = "变换"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -258,6 +288,7 @@ margin_right = 262.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 4 )
 toggle_mode = true
+group = ExtResource( 11 )
 text = "动画"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -268,6 +299,8 @@ margin_left = 266.0
 margin_right = 318.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 4 )
+toggle_mode = true
+group = ExtResource( 11 )
 text = "姿态"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -279,6 +312,7 @@ margin_right = 374.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 4 )
 toggle_mode = true
+group = ExtResource( 11 )
 text = "表情"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -289,6 +323,7 @@ margin_left = 378.0
 margin_right = 430.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 4 )
+group = ExtResource( 11 )
 text = "移动"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -299,6 +334,8 @@ margin_left = 434.0
 margin_right = 486.0
 margin_bottom = 61.0
 custom_fonts/font = SubResource( 4 )
+toggle_mode = true
+group = ExtResource( 11 )
 text = "菜单"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -581,8 +618,11 @@ text = "angry"
 [connection signal="select" from="GridContainer" to="." method="_on_GridContainer_select"]
 [connection signal="pressed" from="GridContainer/Alice" to="GridContainer" method="_on_Alice_pressed"]
 [connection signal="pressed" from="GridContainer/lilylily" to="GridContainer" method="_on_lilylily_pressed"]
+[connection signal="select" from="object_panel" to="." method="_on_GridContainer_select"]
+[connection signal="pressed" from="object_panel/code_city" to="." method="_on_code_city_pressed"]
 [connection signal="track_enable" from="Tab" to="player" method="_on_Tab_track_enable"]
 [connection signal="toggled" from="Tab/HBoxContainer/Giantess" to="GridContainer" method="_on_Giantess_toggled"]
+[connection signal="toggled" from="Tab/HBoxContainer/Objects" to="object_panel" method="_on_Objects_toggled"]
 [connection signal="toggled" from="Tab/HBoxContainer/Transform" to="." method="_on_Transform_toggled"]
 [connection signal="toggled" from="Tab/HBoxContainer/Animation" to="." method="_on_Animation_toggled"]
 [connection signal="toggled" from="Tab/HBoxContainer/morph" to="MorphPanel" method="_on_morph_toggled"]

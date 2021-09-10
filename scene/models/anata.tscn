@@ -23,6 +23,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.979381, 0 )
 stream = ExtResource( 3 )
 
 [node name="Size" type="Label" parent="."]
+visible = false
 margin_left = 409.0
 margin_top = 486.0
 margin_right = 528.0

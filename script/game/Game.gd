@@ -26,17 +26,18 @@ func _process(delta):
 # warning-ignore:unused_argument
 # warning-ignore:unused_argument
 func _on_StaticBody_input_event(camera, event, click_position, click_normal, shape_idx):
-	if sel_obj!=null:
+	if sel_obj != null:
 		if event is InputEventMouseMotion and placed==false:
 			sel_obj.translation=click_position
 		if event is InputEventMouseButton and placed==false:
-			placed=true
+			placed = true
 			sel_obj.translation = click_position
 		print_debug(placed)
 #选择了gts 准备放置
 func _on_GridContainer_select(select_obj):
-	sel_obj=select_obj
+	sel_obj = select_obj
 	add_child(sel_obj)
+	placed = false
 	#sel_obj.connect("selected",self,"select",[])
 	#sel_anim=sel_obj.get_node("anim")
 	$tip.text="选中的对象:"+str(sel_obj)
@@ -77,3 +78,20 @@ func _on_Move_pressed():
 func _on_obj_selected(obj):
 	sel_obj=obj
 	$tip.text="选中的对象:"+str(sel_obj)
+#添加程序化城市
+func _on_code_city_pressed():
+	#城市空隙
+	var city_space = 100
+	#是否有npc
+	var has_people = false
+	#城市楼房高度
+	var city_height = 100
+	#城市大小
+	var city_size = 100 
+	#单独的楼房场景
+#	var city_cell = load("res://models/building.obj").instance()
+#	sel_obj = city_cell
+#	for i in 100:
+#		city_cell.translation.x += city_space
+#		add_child(city_cell)
+	pass
