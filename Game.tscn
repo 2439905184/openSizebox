@@ -632,6 +632,27 @@ script = ExtResource( 16 )
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 script = ExtResource( 15 )
 
+[node name="debug" type="Label" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 6 )
+text = "位置:0,0,0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_state" type="Label" parent="."]
+margin_left = 615.215
+margin_top = 32.8071
+margin_right = 711.215
+margin_bottom = 60.8071
+custom_fonts/font = ExtResource( 6 )
+text = "玩家状态机:idle"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="select" from="GridContainer" to="." method="_on_GridContainer_select"]
 [connection signal="pressed" from="GridContainer/Alice" to="GridContainer" method="_on_Alice_pressed"]
 [connection signal="pressed" from="GridContainer/lilylily" to="GridContainer" method="_on_lilylily_pressed"]

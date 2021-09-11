@@ -6,12 +6,17 @@ var index=0
 var action="前"
 var sel_obj
 #是否放下物体
-var placed=false
+var placed = false
 var sel_anim
+var enable_debug_info = false
 func _ready():
 	move_pos=get_tree().get_nodes_in_group("move_pos")
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func _input(event):
+	#调试信息
+	if event.is_action_pressed("f3"):
+		enable_debug_info = true
+		$debug.show()
 	if event.is_action_pressed("esc"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event.is_action_pressed("editMode"):
@@ -20,7 +25,8 @@ func _input(event):
 		$Tab.show()
 # warning-ignore:unused_argument
 func _process(delta):
-	#s[index].translation,delta*speed)
+	if enable_debug_info:
+		$debug.text = "位置:"+str($player.translation)
 	pass
 
 func _on_StaticBody_input_event(camera, event, click_position, click_normal, shape_idx):
