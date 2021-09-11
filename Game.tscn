@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scene/models/anata.tscn" type="PackedScene" id=1]
 [ext_resource path="res://font/40.tres" type="DynamicFont" id=2]
@@ -17,15 +17,6 @@
 [ext_resource path="res://script/game/DirectionalLight.gd" type="Script" id=15]
 [ext_resource path="res://script/game/WorldEnvironment.gd" type="Script" id=16]
 
-[sub_resource type="QuadMesh" id=1]
-size = Vector2( 2000, 2000 )
-
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.541176, 0.741176, 0.45098, 1 )
-
-[sub_resource type="BoxShape" id=3]
-extents = Vector3( 421.638, 1, 432.372 )
-
 [sub_resource type="DynamicFont" id=4]
 size = 20
 font_data = ExtResource( 5 )
@@ -41,21 +32,6 @@ default_font = ExtResource( 6 )
 
 [node name="Game" type="Spatial"]
 script = ExtResource( 3 )
-
-[node name="floor" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
-input_ray_pickable = false
-
-[node name="floor" type="MeshInstance" parent="floor"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -60.742 )
-visible = false
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
-
-[node name="CollisionShape" type="CollisionShape" parent="floor"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.73181e-08, -0.853738 )
-shape = SubResource( 3 )
-disabled = true
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
@@ -510,6 +486,7 @@ text = "angry"
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.07569, 0 )
+linear_path = NodePath("../debug/linear")
 
 [node name="sand" type="MeshInstance" parent="."]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, -5.23732, -8.01453, 4.13342 )
@@ -642,6 +619,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="linear" type="Label" parent="debug"]
+margin_left = 2.86072
+margin_top = 37.0498
+margin_right = 146.861
+margin_bottom = 65.0498
+custom_fonts/font = ExtResource( 6 )
+text = "线性速度:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="player_state" type="Label" parent="."]
 margin_left = 615.215
 margin_top = 32.8071
@@ -678,7 +666,7 @@ __meta__ = {
 [connection signal="pressed" from="GameMenu/menu/resume" to="GameMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="GameMenu/menu/exit" to="GameMenu" method="_on_exit_pressed"]
 [connection signal="item_selected" from="GameMenu/menu/graphics_set" to="WorldEnvironment" method="_on_graphics_set_item_selected"]
-[connection signal="value_changed" from="GameMenu/menu/light" to="GameMenu" method="_on_light_value_changed"]
 [connection signal="value_changed" from="GameMenu/menu/light" to="DirectionalLight" method="_on_light_value_changed"]
+[connection signal="value_changed" from="GameMenu/menu/light" to="GameMenu" method="_on_light_value_changed"]
 [connection signal="toggled" from="GameMenu/menu/glow" to="WorldEnvironment" method="_on_glow_toggled"]
 [connection signal="toggled" from="GameMenu/menu/ss reflection" to="WorldEnvironment" method="_on_ss_reflection_toggled"]
