@@ -18,10 +18,11 @@ var gravity = Vector3(0,-9.8,0) #重力
 #实时f3显示线性速度
 export (NodePath)var linear_path
 var label_linear:Label
+#跳跃力度
+var jump_vec = 10
 func _ready():
 	player_state = get_parent().get_node("player_state")
 	label_linear = get_node(linear_path)
-	
 func _process(delta):
 	#掉出场景 自动重置
 	if self.translation.y < -100:
@@ -52,7 +53,7 @@ func _process(delta):
 	#跳起后下落
 	if state == all_state.idle and Input.is_action_just_pressed("jump"):
 		print_debug("跳起")
-		vv = 10.0
+		vv = jump_vec
 		move_and_slide(linear_velocity,Vector3(0,9.8,0))
 		state = all_state.drop
 		pass
@@ -78,16 +79,20 @@ func _process(delta):
 		walk("front")
 	if Input.is_action_pressed("walk_back"):
 		walk("back")
-	#变大变小 速度同时变化 代码实现
+	#变大变小 速度同时变化 跳跃力度同时变化 
 	if Input.is_action_pressed("grow"):
 		self.scale += Vector3(grow_speed,grow_speed,grow_speed)
 		move_speed += grow_speed
+		jump_vec += grow_speed
 		print_debug("移动速度",move_speed)
+		print_debug("跳跃力度",jump_vec)
 		show_size()
 	if Input.is_action_pressed("small"):
 		if self.scale > Vector3(0.09,0.09,0.09):
 			move_speed -= grow_speed
+			jump_vec -= grow_speed
 			print_debug("移动速度",move_speed)
+			print_debug("跳跃力度",jump_vec)
 			self.scale-=Vector3(grow_speed,grow_speed,grow_speed)
 			show_size()
 func walk(dir):
