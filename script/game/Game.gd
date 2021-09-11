@@ -17,6 +17,7 @@ func _input(event):
 	if event.is_action_pressed("f3"):
 		enable_debug_info = true
 		$debug.show()
+		get_tree().debug_collisions_hint=true
 	if event.is_action_pressed("esc"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if event.is_action_pressed("editMode"):

@@ -11,6 +11,7 @@ radius = 0.280986
 height = 0.851779
 
 [node name="player" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="anata" parent="." instance=ExtResource( 1 )]

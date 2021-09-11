@@ -25,6 +25,9 @@ func _ready():
 	pass
 var gravity = Vector3(0,-9.8,0)
 func _process(delta):
+	#掉出场景 自动重置
+	if self.translation.y < -100:
+		get_tree().reload_current_scene()
 	#线性重力
 	linear_velocity += gravity * delta
 	#纵向速度
@@ -39,9 +42,15 @@ func _process(delta):
 		move_and_slide(Vector3(0,speed*delta,0))
 		if !se_fly.is_playing():
 			$fly.play(0.08)
+	#松开空格 变成悬浮
 	if state == all_state.fly and Input.is_action_just_released("jump"):
 		state = all_state.fly_float
-		player_state.text = p_state_t +"fly float"
+		player_state.text = p_state_t + "fly float"
+	if state == all_state.fly and Input.is_action_pressed("walk"):
+		self.rotation_degrees.x = -15
+		print_debug("向前飞行 动作")
+		player_state.text = p_state_t +"fly "
+	#垂直下非
 	if state == all_state.fly_float and Input.is_action_pressed("q"):
 		move_and_slide(Vector3(0,-speed*delta,0))
 		if !se_fly.is_playing():
@@ -70,7 +79,7 @@ func _process(delta):
 		if is_on_floor():
 			state = all_state.idle
 			apply_gravity = true
-	if Input.is_action_just_pressed("walk"):
+	if state != all_state.fly_float and Input.is_action_just_pressed("walk"):
 		if state == all_state.fly_float:
 			state = all_state.idle
 			anim.play("idle")
@@ -82,13 +91,18 @@ func _process(delta):
 		walk("front")
 	if Input.is_action_pressed("walk_back"):
 		walk("back")
-	#变大变小
+	#变大变小 速度同时变化
 	if Input.is_action_pressed("grow"):
-		self.scale+=Vector3(grow_speed,grow_speed,grow_speed)
+		self.scale += Vector3(grow_speed,grow_speed,grow_speed)
+		move_speed += grow_speed
+		print_debug("移动速度",move_speed)
 		show_size()
 	if Input.is_action_pressed("small"):
-		self.scale-=Vector3(grow_speed,grow_speed,grow_speed)
-		show_size()
+		if self.scale > Vector3(0.09,0.09,0.09):
+			move_speed -= grow_speed
+			print_debug("移动速度",move_speed)
+			self.scale-=Vector3(grow_speed,grow_speed,grow_speed)
+			show_size()
 func walk(dir):
 	if dir == "front":
 		move_and_slide(Vector3(0,0,move_speed))
