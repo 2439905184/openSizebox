@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scene/models/anata.tscn" type="PackedScene" id=1]
+
+[node name="Spatial" type="Spatial"]
+__meta__ = {
+"_editor_description_": "平地"
+}
+
+[node name="MeshInstance" type="CSGBox" parent="."]
+use_collision = true
+width = 26.0912
+height = 0.332085
+depth = 18.41
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.89304, 0 )

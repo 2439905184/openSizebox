@@ -20,10 +20,13 @@ func _process(delta):
 	#重力下落
 	if state == all_state.drop:
 		#anim.play("idle")
-		print_debug("下落")
+		#print_debug("下落")
 		#print_debug(is_on_floor())
-#		if !is_on_floor():
-#			move_and_slide(Vector3(0,-speed*delta,0))
+		if !is_on_floor():
+			move_and_slide(Vector3(0,-speed,0),Vector3.UP)
+			print_debug(is_on_floor())
+		if is_on_floor():
+			state = all_state.idle
 	#根据第三人称相机的指向飞行
 #	if state == all_state.fly_float and Input.is_action_pressed("walk"):
 #		move_and_slide(Vector3(0,0,-speed*delta).rotated(Vector3.UP,)
@@ -61,12 +64,13 @@ func walk(dir):
 	pass
 func _input(event):
 	#再次按下f 下落
-	if event.is_action_pressed("fly") and state == all_state.fly_float:
-		state = all_state.drop
-		print_debug("下落状态",state)
-		
+#	if event.is_action_pressed("fly") and state == all_state.fly_float:
+#		state = all_state.drop
+#		print_debug("下落状态",state)
+#
 	if event.is_action_pressed("fly") and state != all_state.fly_float:
-		state = all_state.fly_float
+		state = all_state.drop
+#		state = all_state.fly_float
 		#先复位 后飞行
 		anim.play("idle")
 		anim.play("fly_float")
