@@ -1,31 +1,89 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://models/anata/anata.glb" type="PackedScene" id=1]
 [ext_resource path="res://addons/bone_editor/BoneHandle.tscn" type="PackedScene" id=2]
 [ext_resource path="res://addons/bone_editor/BoneHandle.gd" type="Script" id=3]
 [ext_resource path="res://addons/bone_editor/BoneEditor.gd" type="Script" id=4]
 [ext_resource path="res://script/Third.gd" type="Script" id=5]
+[ext_resource path="res://anim/fly_float.tres" type="Animation" id=6]
 [ext_resource path="res://anim/walk.tres" type="Animation" id=7]
 [ext_resource path="res://script/anata.gd" type="Script" id=8]
 
-[sub_resource type="AnimationNodeAnimation" id=1]
-animation = "walk2"
-
-[sub_resource type="AnimationNodeAnimation" id=2]
-animation = "idle"
-
-[sub_resource type="AnimationNodeBlend2" id=3]
-
-[sub_resource type="AnimationNodeBlendTree" id=4]
-graph_offset = Vector2( -14.565, -1.5 )
-nodes/Animation/node = SubResource( 2 )
-nodes/Animation/position = Vector2( -20, 40 )
-"nodes/Animation 2/node" = SubResource( 1 )
-"nodes/Animation 2/position" = Vector2( 20, 120 )
-nodes/output/position = Vector2( 500, 60 )
-nodes/walk/node = SubResource( 3 )
-nodes/walk/position = Vector2( 260, 40 )
-node_connections = [ "output", 0, "walk", "walk", 0, "Animation", "walk", 1, "Animation 2" ]
+[sub_resource type="Animation" id=1]
+resource_name = "idle"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("BoneEditor/Hips/Spine/Chest/Left shoulder/Left arm:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BoneEditor/Hips/Spine/Chest/Right shoulder/Right arm:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BoneEditor/Hips/Right leg:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BoneEditor/Hips/Left leg:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BoneEditor/Hips/Left leg/Left knee:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BoneEditor/Hips/Right leg/Right knee:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
 
 [node name="anata" instance=ExtResource( 1 )]
 script = ExtResource( 8 )
@@ -40,11 +98,7 @@ script = ExtResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.72529e-08, 0.446512, 1.21036 )
 current = true
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="4"]
-tree_root = SubResource( 4 )
-parameters/walk/blend_amount = 0.0
-
-[node name="BoneEditor" type="Spatial" parent="." index="5"]
+[node name="BoneEditor" type="Spatial" parent="." index="4"]
 script = ExtResource( 4 )
 control_skeleton = NodePath("../Armature/Skeleton")
 edit_animation_player = NodePath("../AnimationPlayer")
@@ -381,5 +435,7 @@ script = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00181023, -0.0528592, 0.0963101 )
 script = ExtResource( 3 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+anims/fly_float = ExtResource( 6 )
+anims/idle = SubResource( 1 )
 anims/walk = ExtResource( 7 )

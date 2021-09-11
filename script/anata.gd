@@ -1,5 +1,4 @@
 extends Spatial
-onready var tree = $AnimationTree
 var state_machine
 func _ready():
 	#state_machine = $AnimationTree.get("parameters/playback")

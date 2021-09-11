@@ -14,7 +14,7 @@ var track_mouse=true
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	target=find_parent("anata").get_node("Armature")
-	print_debug("玩家cam",$v/Camera)
+	#print_debug("玩家cam",$v/Camera)
 	pass
 func _input(event):
 	#缩小
