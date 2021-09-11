@@ -1,5 +1,5 @@
 extends KinematicBody
-enum all_state{fly_float,fly,walk,idle,drop}
+enum all_state{fly_float,fly,walk,idle,jump,drop}
 var state=all_state.idle
 var move_speed = 2
 var speed = 100
@@ -23,12 +23,21 @@ func _process(delta):
 		move_and_slide(Vector3(0,-speed*delta,0))
 		if !se_fly.is_playing():
 			$fly.play(0.08)
+	#悬浮
+	if state == all_state.fly_float:
+		var pos_y = fly_float()
+		#print_debug(pos_y)
+		translate(Vector3(0,pos_y,0))
+	if state == all_state.jump and Input.is_action_just_pressed("jump"):
+		#跳
+		pass
 	#重力下落
 	if state == all_state.drop:
 		if !is_on_floor():
 			move_and_slide(Vector3(0,-drop_speed,0),Vector3.UP)
 		if is_on_floor():
 			state = all_state.idle
+	
 	#根据第三人称相机的指向飞行
 #	if state == all_state.fly_float and Input.is_action_pressed("walk"):
 #		move_and_slide(Vector3(0,0,-speed*delta).rotated(Vector3.UP,)
@@ -65,7 +74,9 @@ func walk(dir):
 		anim.play("walk")
 		pass
 	pass
-
+func fly_float():
+	var pos_y=0.005*sin(0.03*PI*Engine.get_idle_frames())
+	return pos_y
 func _input(event):
 	#再次按下f 下落
 	if event.is_action_pressed("fly") and state == all_state.fly_float:
@@ -80,10 +91,11 @@ func _input(event):
 		#先复位 后飞行
 		anim.play("idle")
 		anim.play("fly_float")
+		
 func show_size():
 	if not $Size.visible:
 		$Size.show()
 	$Size.text="Size:"+str(self.scale.x)
+	
 func _on_Tab_track_enable():
 	$anata/h.track_mouse=true
-	pass # Replace with function body.

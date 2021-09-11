@@ -80,8 +80,8 @@ func _on_Move_pressed():
 	pass
 #选中了对象 alice被选中 gts被选中等 接受信号的地方
 func _on_obj_selected(obj):
-	sel_obj=obj
-	$tip.text="选中的对象:"+str(sel_obj)
+	sel_obj = obj
+	$tip.text = "选中的对象:"+str(sel_obj)
 #添加程序化城市
 func _on_code_city_pressed():
 	#城市空隙
