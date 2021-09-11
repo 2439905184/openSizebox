@@ -28,7 +28,6 @@ func _input(event):
 func _process(delta):
 	if enable_debug_info:
 		$debug.text = "位置:"+str($player.translation)
-	pass
 
 func _on_StaticBody_input_event(camera, event, click_position, click_normal, shape_idx):
 	if sel_obj != null:

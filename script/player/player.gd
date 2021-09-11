@@ -42,8 +42,8 @@ func _process(delta):
 		if !se_fly.is_playing():
 			$fly.play(0.08)
 	#向前飞行 做的动作
-	if state == all_state.fly and Input.is_action_pressed("walk"):
-		self.rotation_degrees.x = -15
+	if state == all_state.fly_float and Input.is_action_pressed("walk"):
+		self.rotation_degrees.x = 45
 		print_debug("向前飞行 动作")
 		sync_state_label("fly")
 	#悬浮
@@ -154,6 +154,6 @@ func _on_Tab_track_enable():
 	$anata/h.track_mouse=true
 #同步状态 显示在游戏屏幕
 func sync_state_label(value:String):
-	player_state.text = p_state_t + value
+	player_state.text = p_state_t + value 
 	pass
 # todo 根据第三人称相机的指向飞行

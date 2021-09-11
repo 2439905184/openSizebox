@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scene/models/anata.tscn" type="PackedScene" id=1]
+[ext_resource path="res://font/20.tres" type="DynamicFont" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.384314, 0.92549, 0.415686, 1 )
+
+[sub_resource type="PlaneMesh" id=1]
+material = SubResource( 3 )
+size = Vector2( 600, 600 )
+
+[sub_resource type="ConcavePolygonShape" id=4]
+data = PoolVector3Array( 300, 0, 300, -300, 0, 300, 300, 0, -300, -300, 0, 300, -300, 0, -300, 300, 0, -300 )
+
+[node name="Spatial" type="Spatial"]
+__meta__ = {
+"_editor_description_": "平地"
+}
+
+[node name="plane" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="plane"]
+
+[node name="CollisionShape" type="CollisionShape" parent="plane/StaticBody"]
+shape = SubResource( 4 )
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+linear_path = NodePath("../debug/linear")
+
+[node name="debug" type="Label" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 2 )
+text = "位置:0,0,0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="linear" type="Label" parent="debug"]
+margin_left = 2.86072
+margin_top = 37.0498
+margin_right = 146.861
+margin_bottom = 65.0498
+custom_fonts/font = ExtResource( 2 )
+text = "线性速度:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_state" type="Label" parent="."]
+margin_left = 758.167
+margin_top = 31.1253
+margin_right = 902.167
+margin_bottom = 59.1253
+custom_fonts/font = ExtResource( 2 )
+text = "玩家状态机:idle"
+__meta__ = {
+"_edit_use_anchors_": false
+}
