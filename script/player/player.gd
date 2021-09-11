@@ -26,6 +26,7 @@ func _ready():
 func _process(delta):
 	#掉出场景 自动重置
 	if self.translation.y < -100:
+# warning-ignore:return_value_discarded
 		get_tree().reload_current_scene()
 	#线性重力
 	linear_velocity += gravity * delta
